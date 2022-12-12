@@ -5,14 +5,14 @@
   --lighter: #F0E6DF;
   --dark: #0F2141;
   --darker: #030913;
-  --black: #3D3D3D;
+  --gray: #3D3D3D;
   --gold: #F0AD4E;
   --red: #D9534F;
 }
 
 body {
   background-color: var(--light);
-  color: var(--black);
+  color: var(--gray);
   font-family: "Lato", sans-serif;
   background: repeating-linear-gradient(var(--lighter), var(--lighter) 149px, var(--light) 150px, var(--light) 0px);
 }
@@ -28,7 +28,7 @@ body {
 .header--logo {
   text-decoration: none;
   color: inherit;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bolder;
 }
 
@@ -43,4 +43,22 @@ body {
   text-decoration: none;
   color: inherit;
   font-size: x-large;
+}
+
+/* Footer */
+
+.footer {
+  text-align: center;
+}
+
+.footer--icons {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  margin: auto;
+}
+
+.footer--copy {
+  margin-top: 25px;
+  font-size: large;
 }
