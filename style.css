@@ -17,6 +17,10 @@ body {
   background: repeating-linear-gradient(var(--lighter), var(--lighter) 149px, var(--light) 150px, var(--light) 0px);
 }
 
+section {
+  margin: 6vh 12vw;
+}
+
 /* Header */
 
 .header {
@@ -50,6 +54,34 @@ body {
   text-underline-offset: 7px;
   color: var(--gold);
   font-weight: bold;
+}
+
+/* Home */
+
+.home {
+  display: flex;
+}
+
+.home--picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home--picture > img {
+  border-radius: 100%;
+  border: 7px solid var(--light);
+  width: 300px;
+}
+
+.home--header {
+  font-size: 75px;
+}
+
+.home--subtitle {
+  font-size: xx-large;
+  font-weight: normal;
+  line-height: 55px;
 }
 
 /* Footer */
