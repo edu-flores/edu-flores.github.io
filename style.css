@@ -45,6 +45,13 @@ body {
   font-size: x-large;
 }
 
+.active {
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  color: var(--gold);
+  font-weight: bold;
+}
+
 /* Footer */
 
 .footer {
