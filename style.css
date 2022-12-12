@@ -1,0 +1,71 @@
+/* General */
+
+:root {
+  --light: #DFD4CA;
+  --lighter: #F0E6DF;
+  --dark: #0F2141;
+  --darker: #030913;
+  --gray: #3D3D3D;
+  --gold: #F0AD4E;
+  --red: #D9534F;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--gray);
+  font-family: "Lato", sans-serif;
+  background: repeating-linear-gradient(var(--lighter), var(--lighter) 149px, var(--light) 150px, var(--light) 0px);
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 120px;
+}
+
+.header--logo {
+  text-decoration: none;
+  color: inherit;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.navbar {
+  width: 50%;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar--link {
+  text-decoration: none;
+  color: inherit;
+  font-size: x-large;
+}
+
+.active {
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  color: var(--gold);
+  font-weight: bold;
+}
+
+/* Footer */
+
+.footer {
+  text-align: center;
+}
+
+.footer--icons {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  margin: auto;
+}
+
+.footer--copy {
+  margin-top: 25px;
+  font-size: large;
+}
