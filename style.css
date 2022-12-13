@@ -1,8 +1,8 @@
 /* General */
 
 :root {
-  --light: #DFD4CA;
-  --lighter: #F5F0EB;
+  --light: #E6DCD2;
+  --lighter: #F8F3F0;
   --dark: #0F2141;
   --darker: #030913;
   --gray: #3D3D3D;
@@ -134,6 +134,7 @@ span {
 
 .about--text {
   font-size: 24px;
+  line-height: 35px;
 }
 
 .about--techs {
@@ -168,6 +169,85 @@ span {
   text-underline-offset: 4px;
   color: var(--gold);
   font-weight: bold;
+}
+
+/* Projects */
+
+.projects--code::before {
+  content: "> ";
+}
+
+.projects--code {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.projects--cmd {
+  margin-bottom: 24px;
+}
+
+#cursor {
+  display: inline-block;
+  position: absolute;
+  margin-left: 5px;
+  width: 14px;
+  height: 27px;
+  background-color: var(--gray);
+}
+
+.projects > .row {
+  margin-bottom: 24px;
+}
+
+.projects--gif {
+  width: 100%;
+  height: auto;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.projects--tech {
+  text-align: center;
+  font-size: large;
+  border: 2px solid var(--gold);
+  border-radius: 0px 0px 20px 20px;
+  padding: 10px;
+  margin: 0;
+  margin-top: -5px;
+}
+
+.projects--info {
+  width: 90%;
+  margin: auto;
+}
+
+.row:nth-child(odd) .projects--info {
+  text-align: end;
+  margin-bottom: 24px;
+}
+
+.projects--title {
+  font-size: x-large;
+}
+
+.projects--desc {
+  font-size: larger;
+  line-height: 30px;
+}
+
+.projects--btn {
+  width: 170px;
+  padding: 10px;
+  color: var(--gray);
+  background-color: inherit;
+  border-radius: 12px;
+  border: 2px solid var(--gold);
+  font-size: large;
+}
+
+.projects--bottom-txt {
+  text-align: end;
+  font-weight: bold;
+  font-size: large;
 }
 
 /* Footer */
