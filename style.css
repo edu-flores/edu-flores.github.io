@@ -14,7 +14,7 @@ body {
   background-color: var(--lighter);
   color: var(--gray);
   font-family: "Lato", sans-serif;
-  background: repeating-linear-gradient(var(--lighter), var(--lighter) 149px, var(--light) 150px, var(--light) 0px);
+  background-image: repeating-linear-gradient(var(--lighter), var(--lighter) 149px, var(--light) 150px, var(--light) 0px);
 }
 
 section {
@@ -77,7 +77,11 @@ span {
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 60px 120px;
+  align-items: center;
+  padding: 20px 120px;
+  position: sticky;
+  top: 0;
+  background-color: inherit;
 }
 
 .header--logo {
@@ -88,16 +92,16 @@ span {
 }
 
 .navbar {
-  width: 50%;
-  align-self: center;
+  width: 40%;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .navbar--link {
   text-decoration: none;
   color: inherit;
-  font-size: x-large;
+  font-size: larger;
 }
 
 .active {
