@@ -151,6 +151,25 @@ span {
   width: 60px;
 }
 
+.about--cv {
+  text-align: center;
+}
+
+.about--subtitle {
+  font-size: x-large;
+}
+
+.about--cv > p {
+  font-size: larger;
+}
+
+.about--cv a {
+  letter-spacing: 1px;
+  text-underline-offset: 4px;
+  color: var(--gold);
+  font-weight: bold;
+}
+
 /* Footer */
 
 .footer {
