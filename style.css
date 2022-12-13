@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: var(--light);
+  background-color: var(--lighter);
   color: var(--gray);
   font-family: "Lato", sans-serif;
   background: repeating-linear-gradient(var(--lighter), var(--lighter) 149px, var(--light) 150px, var(--light) 0px);
