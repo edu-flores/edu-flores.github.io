@@ -10,6 +10,11 @@
   --red: #D9534F;
 }
 
+html {
+  scroll-padding-top: 86px;
+  scroll-behavior: smooth !important;
+}
+
 body {
   background-color: var(--lighter);
   color: var(--gray);
