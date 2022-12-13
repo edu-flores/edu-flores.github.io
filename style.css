@@ -26,7 +26,7 @@ section {
   margin: 6vh 12vw;
 }
 
-span {
+.bg-text {
   z-index: -1;
   opacity: 0.3;
   position: absolute;
@@ -196,12 +196,8 @@ span {
 }
 
 #cursor {
-  display: inline-block;
-  position: absolute;
   margin-left: 5px;
-  width: 14px;
-  height: 27px;
-  background-color: var(--gray);
+  background-color: currentColor;
 }
 
 .projects > .row {
@@ -246,7 +242,7 @@ span {
 .projects--btn {
   width: 170px;
   padding: 14px;
-  color: var(--gray);
+  color: currentColor;
   background-color: inherit;
   border-radius: 12px;
   border: 2px solid var(--gold);
@@ -305,7 +301,7 @@ span {
 
 .contact--form button {
   background-color: var(--gold);
-  color: var(--gray);
+  color: currentColor;
   width: 170px;
   padding: 14px;
   border-radius: 12px;
