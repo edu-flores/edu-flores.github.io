@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: var(--light);
+  background-color: var(--lighter);
   color: var(--gray);
   font-family: "Lato", sans-serif;
   background: repeating-linear-gradient(var(--lighter), var(--lighter) 149px, var(--light) 150px, var(--light) 0px);
@@ -236,7 +236,7 @@ span {
 
 .projects--btn {
   width: 170px;
-  padding: 10px;
+  padding: 14px;
   color: var(--gray);
   background-color: inherit;
   border-radius: 12px;
@@ -247,6 +247,60 @@ span {
 .projects--bottom-txt {
   text-align: end;
   font-weight: bold;
+  font-size: large;
+}
+
+/* Contact */
+
+.contact--text {
+  width: 80%;
+}
+
+.contact--title {
+  font-size: x-large;
+}
+
+.contact--text p {
+  font-size: larger;
+  line-height: 30px;
+  margin-bottom: 38px;
+}
+
+.contact--text b {
+  color: var(--gold);
+}
+
+.contact--form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.contact--form label::after {
+  content: " *";
+  color: var(--red);
+}
+
+.contact--form input, textarea {
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  padding: 18px 0px;
+  text-indent: 16px;
+  margin-bottom: 20px;
+  border: 1px solid var(--gray);
+  border-radius: 3px;
+  font-size: large;
+  resize: vertical;
+}
+
+.contact--form button {
+  background-color: var(--gold);
+  color: var(--gray);
+  width: 170px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 0px;
   font-size: large;
 }
 
