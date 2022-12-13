@@ -225,7 +225,7 @@ section {
   margin: auto;
 }
 
-.row:nth-child(odd) .projects--info {
+.row:nth-child(even) .projects--info {
   text-align: end;
   margin-bottom: 24px;
 }
