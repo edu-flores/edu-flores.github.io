@@ -21,6 +21,29 @@ section {
   margin: 6vh 12vw;
 }
 
+span {
+  z-index: -1;
+  opacity: 0.3;
+  position: absolute;
+  font-size: 280px;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: var(--light);
+  user-select: none;
+}
+
+/* Utilities */
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-hidden {
+  display: none;
+}
+
 .row::after {
   content: "";
   clear: both;
@@ -45,6 +68,8 @@ section {
   .col-10 {width: 83.33%;}
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
+
+  .mobile-hidden {display: initial;}
 }
 
 /* Header */
@@ -103,6 +128,46 @@ section {
   font-size: xx-large;
   font-weight: normal;
   line-height: 55px;
+}
+
+/* About */
+
+.about--text {
+  font-size: 24px;
+}
+
+.about--techs {
+  width: 65%;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 25px;
+  column-gap: 6%;
+}
+
+.about--techs > img {
+  width: 60px;
+}
+
+.about--cv {
+  text-align: center;
+}
+
+.about--subtitle {
+  font-size: x-large;
+}
+
+.about--cv > p {
+  font-size: larger;
+}
+
+.about--cv a {
+  letter-spacing: 1px;
+  text-underline-offset: 4px;
+  color: var(--gold);
+  font-weight: bold;
 }
 
 /* Footer */
