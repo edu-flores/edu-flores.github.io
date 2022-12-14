@@ -48,6 +48,10 @@ button i {
   user-select: none;
 }
 
+.header i, .footer i {
+  cursor: pointer;
+}
+
 /* Utilities */
 
 .center {
@@ -84,8 +88,12 @@ button i {
   .col-10 {width: 83.33%;}
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
+}
 
+@media only screen and (min-width: 992px) {
   .mobile-hidden {display: initial;}
+  .header nav {display: flex !important;}
+  .header > i {display: none;}
 }
 
 /* Header */
@@ -94,7 +102,7 @@ button i {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 120px;
+  padding: 20px 8vw;
   position: sticky;
   top: 0;
   background-color: inherit;
@@ -105,6 +113,10 @@ button i {
   color: inherit;
   font-size: 40px;
   font-weight: bolder;
+}
+
+.header nav {
+  display: none;  
 }
 
 .navbar {
