@@ -1,13 +1,12 @@
 /* General */
 
 :root {
-  --light: #E6DCD2;
-  --lighter: #F8F3F0;
+  --light: #F6F6F6;
+  --lighter: #FFFDFC;
   --dark: #0F2141;
   --darker: #030913;
   --gray: #3D3D3D;
-  --gold: #F0AD4E;
-  --red: #D9534F;
+  --orange: #eb5937;
 }
 
 html {
@@ -19,16 +18,28 @@ body {
   background-color: var(--lighter);
   color: var(--gray);
   font-family: "Lato", sans-serif;
-  background-image: repeating-linear-gradient(var(--lighter), var(--lighter) 149px, var(--light) 150px, var(--light) 0px);
+  background-image: repeating-linear-gradient(var(--lighter), var(--lighter) 147px, var(--light) 150px, var(--light) 0px);
 }
 
 section {
   margin: 6vh 12vw;
 }
 
+button {
+  cursor: pointer;
+  width: 170px;
+  height: 48px;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: large;
+}
+
+button i {
+  margin-right: 6px;
+}
+
 .bg-text {
   z-index: -1;
-  opacity: 0.3;
   position: absolute;
   font-size: 280px;
   font-weight: bold;
@@ -112,7 +123,7 @@ section {
 .active {
   text-decoration: underline;
   text-underline-offset: 7px;
-  color: var(--gold);
+  color: var(--orange);
   font-weight: bold;
 }
 
@@ -148,7 +159,7 @@ section {
 
 .about--techs {
   width: 65%;
-  margin: 40px auto;
+  margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -176,7 +187,7 @@ section {
 .about--cv a {
   letter-spacing: 1px;
   text-underline-offset: 4px;
-  color: var(--gold);
+  color: var(--orange);
   font-weight: bold;
 }
 
@@ -213,7 +224,7 @@ section {
 .projects--tech {
   text-align: center;
   font-size: large;
-  border: 2px solid var(--gold);
+  border: 2px solid var(--orange);
   border-radius: 0px 0px 20px 20px;
   padding: 10px;
   margin: 0;
@@ -240,13 +251,9 @@ section {
 }
 
 .projects--btn {
-  width: 170px;
-  padding: 14px;
-  color: currentColor;
   background-color: inherit;
-  border-radius: 12px;
-  border: 2px solid var(--gold);
-  font-size: large;
+  color: currentColor;
+  border: 2px solid var(--orange);
 }
 
 .projects--bottom-txt {
@@ -272,7 +279,7 @@ section {
 }
 
 .contact--text b {
-  color: var(--gold);
+  color: var(--orange);
 }
 
 .contact--form label {
@@ -283,7 +290,7 @@ section {
 
 .contact--form label::after {
   content: " *";
-  color: var(--red);
+  color: var(--orange);
 }
 
 .contact--form input, textarea {
@@ -300,13 +307,9 @@ section {
 }
 
 .contact--form button {
-  background-color: var(--gold);
-  color: currentColor;
-  width: 170px;
-  padding: 14px;
-  border-radius: 12px;
+  background-color: var(--orange);
+  color: var(--lighter);
   border: 0px;
-  font-size: large;
 }
 
 /* Footer */
