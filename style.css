@@ -150,6 +150,7 @@ button i {
 
 .home--picture > img {
   width: 300px;
+  border-radius: 100%;
 }
 
 .home--header {
@@ -171,6 +172,7 @@ button i {
 
 .about--techs {
   width: 65%;
+  max-width: 390px;
   margin: auto;
   display: flex;
   justify-content: space-around;
