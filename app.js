@@ -10,11 +10,8 @@ window.addEventListener("scroll", () => {
 function toggleMenu() {
   if (!header.classList.contains("mobile-open")) {
     header.classList.add("mobile-open");
-    header.classList.add("shadow");
-  } else {
+  } 
+  else {
     header.classList.remove("mobile-open");
-    if (document.documentElement.scrollTop == 0) {
-      header.classList.remove("shadow");
-    }
   }
 }
