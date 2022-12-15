@@ -22,7 +22,7 @@ body {
 }
 
 section {
-  margin: 6vh 12vw;
+  margin: 14vh 12vw;
 }
 
 button {
@@ -143,6 +143,12 @@ button i {
 
 /* Home */
 
+.home {
+  height: 72vh;
+  display: flex;
+  align-items: center;
+}
+
 .home--picture {
   height: 100%;
   display: flex;
@@ -191,10 +197,12 @@ button i {
 
 .about--cv {
   text-align: center;
+  margin-top: 50px;
 }
 
 .about--subtitle {
   font-size: x-large;
+  margin-bottom: 0;
 }
 
 .about--cv > p {
@@ -202,7 +210,6 @@ button i {
 }
 
 .about--cv a {
-  letter-spacing: 1px;
   text-underline-offset: 4px;
   color: var(--orange);
   font-weight: bold;
@@ -376,7 +383,7 @@ button i {
   }
 
   .navbar {
-    width: 40%;
+    width: 30%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
