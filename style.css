@@ -60,6 +60,10 @@ button i {
   align-items: center;
 }
 
+.shadow {
+  box-shadow: 2.6px 2.6px 2.6px rgba(0, 0, 0, 0.15);
+}
+
 .mobile-hidden {
   display: none;
 }
@@ -169,6 +173,7 @@ button i {
 
 .about--techs {
   width: 65%;
+  min-width: 205px;
   max-width: 390px;
   margin: auto;
   display: flex;
