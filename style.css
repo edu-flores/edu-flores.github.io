@@ -16,9 +16,9 @@ html {
 
 body {
   background-color: var(--lighter);
+  background-image: repeating-linear-gradient(var(--lighter), var(--lighter) 147px, var(--light) 150px, var(--light) 0px);
   color: var(--gray);
   font-family: "Lato", sans-serif;
-  background-image: repeating-linear-gradient(var(--lighter), var(--lighter) 147px, var(--light) 150px, var(--light) 0px);
 }
 
 section {
@@ -168,14 +168,12 @@ button i {
 .home--subtitle {
   font-size: xx-large;
   font-weight: normal;
-  line-height: 55px;
 }
 
 /* About */
 
 .about--text {
   font-size: 24px;
-  line-height: 35px;
 }
 
 .about--techs {
@@ -271,7 +269,6 @@ button i {
 
 .projects--desc {
   font-size: larger;
-  line-height: 30px;
 }
 
 .projects--btn {
@@ -298,7 +295,6 @@ button i {
 
 .contact--text p {
   font-size: larger;
-  line-height: 30px;
   margin-bottom: 38px;
 }
 
