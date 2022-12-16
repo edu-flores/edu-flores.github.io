@@ -1,3 +1,23 @@
+// Log custom message
+console.log(
+  `
+   ._________________.
+   |.---------------.|
+   ||               ||      I hope you liked
+   ||    Eduardo    ||      my website. Please,
+   ||    Flores     ||      contact me if you
+   ||               ||      need me for work!
+   ||_______________||
+   /.-.-.-.-.-.-.-.-.\\      eduardo.floresramones@gmail.com
+  /.-.-.-.-.-.-.-.-.-.\\
+ /.-.-.-.-.-.-.-.-.-.-.\\
+/______/__________\\___o_\\
+\\_______________________/
+
+Repo: https://github.com/edu-flores/edu-flores.github.io
+  `
+);
+
 // Check theme
 let theme = localStorage.getItem("theme");
 if (!theme) {
