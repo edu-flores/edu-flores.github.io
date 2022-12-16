@@ -131,7 +131,7 @@ button i {
 .header--logo {
   text-decoration: none;
   color: inherit;
-  font-size: x-large;
+  font-size: 3rem;
   font-weight: bolder;
 }
 
@@ -326,9 +326,14 @@ button i {
 
 .footer--copy {
   margin-top: 25px;
+  font-size: 1.5rem;
 }
 
 /* Media queries */
+
+@media only screen and (min-width: 992px) {
+  html {font-size: 70%;}
+}
 
 @media only screen and (min-width: 992px) {
   .col-1 {width: 8.33%;}
