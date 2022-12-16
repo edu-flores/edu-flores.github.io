@@ -85,7 +85,7 @@ input, textarea, button, a, i {
   bottom: 2rem;
   right: 2rem;
   cursor: pointer;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 5rem;
   font-size: 1.5rem;
   background-color: var(--orange);

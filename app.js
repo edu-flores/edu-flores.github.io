@@ -44,16 +44,14 @@ function toggleTheme() {
   }
 }
 
-const header = document.querySelector(".header");
+// Show scroll to top button
 const scrollBtn = document.querySelector("#scroll-top");
-
-// Add shadow to header after scrolling & show scroll button
 window.addEventListener("scroll", () => {
-  (scrollY > 0) ? header.classList.add("shadow") : header.classList.remove("shadow");
   (scrollY > 300) ? scrollBtn.style.display = "block" : scrollBtn.style.display = "none";
 });
 
 // Open and close nav
+const header = document.querySelector(".header");
 function toggleMenu() {
   if (!header.classList.contains("mobile-open")) {
     header.classList.add("mobile-open");
