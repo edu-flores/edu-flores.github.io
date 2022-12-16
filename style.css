@@ -320,6 +320,10 @@ input, textarea, button, a, i {
   text-align: center;
 }
 
+.footer a:visited, .footer a:hover, .footer a:link {
+  color: inherit;
+}
+
 .footer--icons {
   font-size: 1.5rem;
   display: flex;
