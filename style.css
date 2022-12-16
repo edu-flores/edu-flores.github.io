@@ -10,14 +10,14 @@
 }
 
 html {
-  scroll-padding-top: 86px;
-  scroll-behavior: smooth !important;
   font-size: 62.5%;
+  scroll-padding-top: 10rem;
+  scroll-behavior: smooth !important;
 }
 
 body {
   background-color: var(--lighter);
-  background-image: repeating-linear-gradient(var(--lighter), var(--lighter) 147px, var(--light) 150px, var(--light) 0px);
+  background-image: repeating-linear-gradient(var(--lighter), var(--lighter) 147px, var(--light) 150px, var(--light) 0);
   color: var(--gray);
   font-family: "Lato", sans-serif;
 }
@@ -33,21 +33,20 @@ section {
 
 button {
   cursor: pointer;
-  width: 170px;
-  height: 48px;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 1.2rem 3rem;
+  min-width: 14rem;
+  border-radius: 1rem;
   font-size: 1.5rem;
 }
 
 button i {
-  margin-right: 6px;
+  margin-right: 0.8rem;
 }
 
 .bg-text {
   z-index: -1;
   position: absolute;
-  font-size: 280px;
+  font-size: 25rem;
   font-weight: bold;
   font-family: Garamond, serif;
   color: var(--light);
@@ -77,7 +76,7 @@ button i {
 .row::after {
   content: "";
   clear: both;
-  display: table;
+  display: block;
 }
 
 [class*="col-"] {
@@ -93,7 +92,7 @@ button i {
   top: 0;
   left: 0;
   right: 0;
-  padding: 20px 8vw;
+  padding: 1.4rem 8vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -103,14 +102,14 @@ button i {
   display: none;
   flex-direction: column;
   align-items: center;
-  row-gap: 20px;
-  padding-bottom: 20px;
+  row-gap: 1.4rem;
+  padding-bottom: 1.4rem;
   width: 100%;
   font-size: 1.9rem;
 }
 
 .navbar > i {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .mobile-open {
@@ -120,7 +119,7 @@ button i {
 
 .mobile-open > i {
   position: absolute;
-  top: 33px;
+  top: 3.1rem;
   right: 8vw;
 }
 
@@ -142,7 +141,7 @@ button i {
 
 .active {
   text-decoration: underline;
-  text-underline-offset: 7px;
+  text-underline-offset: 1rem;
   color: var(--orange);
   font-weight: bold;
 }
@@ -163,8 +162,8 @@ button i {
 }
 
 .home--picture > img {
-  width: 300px;
-  border-radius: 100%;
+  width: 25rem;
+  border-radius: 50%;
 }
 
 .home--subtitle {
@@ -173,26 +172,30 @@ button i {
 
 /* About */
 
+.about--text {
+  margin-bottom: 4rem;
+}
+
 .about--techs {
   width: 65%;
-  min-width: 205px;
-  max-width: 390px;
+  min-width: 21rem;
+  max-width: 35rem;
   margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  row-gap: 25px;
+  row-gap: 2rem;
   column-gap: 6%;
 }
 
 .about--techs > img {
-  width: 60px;
+  width: 5rem;
 }
 
 .about--cv {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 4rem;
 }
 
 .about--subtitle {
@@ -200,7 +203,7 @@ button i {
 }
 
 .about--cv a {
-  text-underline-offset: 4px;
+  text-decoration: none;
   color: var(--orange);
   font-weight: bold;
 }
@@ -216,32 +219,31 @@ button i {
 }
 
 .projects--cmd {
-  margin-bottom: 24px;
+  margin-bottom: 2rem;
 }
 
 #cursor {
-  margin-left: 5px;
   background-color: currentColor;
 }
 
 .projects > .row {
-  margin-bottom: 24px;
+  margin-bottom: 2rem;
 }
 
 .projects--gif {
   width: 100%;
   height: auto;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 10px 10px 0 0;
 }
 
 .projects--tech {
   text-align: center;
   font-size: 1.5rem;
   border: 2px solid var(--orange);
-  border-radius: 0px 0px 20px 20px;
-  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  padding: 1rem;
   margin: 0;
-  margin-top: -5px;
+  margin-top: -0.5rem;
 }
 
 .projects--info {
@@ -251,7 +253,7 @@ button i {
 
 .row:nth-child(even) .projects--info {
   text-align: end;
-  margin-bottom: 24px;
+  margin-bottom: 2rem;
 }
 
 .projects--btn {
@@ -272,7 +274,7 @@ button i {
 }
 
 .contact--text p {
-  margin-bottom: 38px;
+  margin-bottom: 4rem;
 }
 
 .contact--text b {
@@ -283,7 +285,7 @@ button i {
   display: block;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 1rem;
 }
 
 .contact--form label::after {
@@ -295,8 +297,8 @@ button i {
   background-color: transparent;
   display: block;
   width: 100%;
-  padding: 18px 0px;
-  text-indent: 16px;
+  padding: 2rem 0;
+  text-indent: 1.8rem;
   margin-bottom: 20px;
   border: 1px solid var(--gray);
   border-radius: 3px;
@@ -307,7 +309,7 @@ button i {
 .contact--form button {
   background-color: var(--orange);
   color: var(--lighter);
-  border: 0px;
+  border: 2px solid var(--orange);
 }
 
 /* Footer */
@@ -320,12 +322,12 @@ button i {
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
-  width: 120px;
+  width: 10rem;
   margin: auto;
 }
 
 .footer--copy {
-  margin-top: 25px;
+  margin-top: 2rem;
   font-size: 1.5rem;
 }
 
@@ -367,7 +369,7 @@ button i {
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    padding: 0px;
+    padding: 0;
   }
 }
 
