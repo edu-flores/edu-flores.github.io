@@ -1,3 +1,29 @@
+// Check theme
+let theme = localStorage.getItem("theme");
+if (!theme) {
+  const { matches } = window.matchMedia("(prefers-color-scheme: dark)");
+  matches ? localStorage.setItem("theme", "dark") : localStorage.setItem("theme", "light");
+}
+
+// Apply theme
+theme = localStorage.getItem("theme");
+if (theme == "dark") {
+  document.body.classList.add("dark-theme");
+}
+
+// Toggle theme
+function toggleTheme() {
+  if (theme == "light") {
+    document.body.classList.add("dark-theme");
+    localStorage.setItem("theme", "dark");
+    theme = "dark";
+  } else {
+    document.body.classList.remove("dark-theme");
+    localStorage.setItem("theme", "light");
+    theme = "light";
+  }
+}
+
 const header = document.querySelector(".header");
 
 // Add shadow to header after scrolling
