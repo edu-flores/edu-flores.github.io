@@ -61,7 +61,7 @@ input, textarea, button, a, i {
   cursor: pointer;
 }
 
-.dark-mode {
+.dark-theme {
   background-color: var(--darker);
   color: var(--lightgray);
 }
@@ -148,7 +148,7 @@ input, textarea, button, a, i {
 
 .active {
   text-decoration: underline;
-  text-underline-offset: 1rem;
+  text-underline-offset: 0.5rem;
   color: var(--orange);
   font-weight: bold;
 }
