@@ -70,7 +70,7 @@ button i {
   box-shadow: 2.6px 2.6px 2.6px rgba(0, 0, 0, 0.15) !important;
 }
 
-.mobile-hidden {
+.desktop-display {
   display: none;
 }
 
@@ -367,5 +367,5 @@ button i {
 }
 
 @media only screen and (min-width: 992px) {
-  .mobile-hidden {display: initial;}
+  .desktop-display {display: initial;}
 }
