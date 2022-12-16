@@ -223,8 +223,8 @@ button i {
   background-color: currentColor;
 }
 
-.projects > .row {
-  margin-bottom: 2rem;
+.projects > .row:not(:last-of-type) {
+  margin-bottom: 6rem;
 }
 
 .projects--gif {
