@@ -1,12 +1,13 @@
 /* General */
 
 :root {
-  --light: #F6F6F6;
-  --lighter: #FFFDFC;
-  --dark: #0F2141;
-  --darker: #030913;
-  --gray: #3D3D3D;
-  --orange: #EB5937;
+  --light: #f6f6f6;
+  --lighter: #fffdfc;
+  --dark: #151515;
+  --darker: #090909;
+  --lightgray: #c6c6c6;
+  --darkgray: #3d3d3d;
+  --orange: #eb5937;
 }
 
 html {
@@ -17,8 +18,7 @@ html {
 
 body {
   background-color: var(--lighter);
-  background-image: repeating-linear-gradient(var(--lighter), var(--lighter) 147px, var(--light) 150px, var(--light) 0);
-  color: var(--gray);
+  color: var(--darkgray);
   font-family: "Lato", sans-serif;
 }
 
@@ -53,12 +53,17 @@ input, textarea, button, a, i {
   font-size: 25rem;
   font-weight: bold;
   font-family: Garamond, serif;
-  color: var(--light);
   user-select: none;
+  opacity: 0.05;
 }
 
 .header i, .footer i {
   cursor: pointer;
+}
+
+.dark-mode {
+  background-color: var(--darker);
+  color: var(--lightgray);
 }
 
 /* Utilities */
@@ -308,7 +313,7 @@ input, textarea, button, a, i {
   padding: 2rem 0;
   text-indent: 1.8rem;
   margin-bottom: 20px;
-  border: 1px solid var(--gray);
+  border: 1px solid var(--darkgray);
   border-radius: 3px;
   font-size: 1.5rem;
   resize: vertical;

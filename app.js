@@ -1,3 +1,7 @@
+function toggleTheme() {
+  document.body.classList.toggle("dark-mode");
+}
+
 const header = document.querySelector(".header");
 
 // Add shadow to header after scrolling
