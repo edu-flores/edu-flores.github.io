@@ -66,6 +66,11 @@ input, textarea, button, a, i {
   color: var(--lightgray);
 }
 
+::selection {
+  background: var(--dark);
+  color: var(--light);
+}
+
 /* Utilities */
 
 .center {
