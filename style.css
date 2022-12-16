@@ -279,6 +279,12 @@ input, textarea, button, a, i {
   margin-bottom: 4rem;
 }
 
+.contact--text a {
+  font-weight: bold;
+  color: var(--orange);
+  text-decoration: none;
+}
+
 .contact--text b {
   color: var(--orange);
 }
