@@ -73,15 +73,13 @@ button i {
   display: none;
 }
 
-.row::after {
-  content: "";
-  clear: both;
-  display: block;
+.row {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 [class*="col-"] {
   width: 100%;
-  float: left;
 }
 
 /* Header */
@@ -155,7 +153,6 @@ button i {
 }
 
 .home--picture {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,15 +175,15 @@ button i {
 
 .about--techs {
   width: 65%;
+  margin: auto;
   min-width: 21rem;
   max-width: 32rem;
-  margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   row-gap: 2rem;
-  column-gap: 6%;
+  column-gap: 2rem;
 }
 
 .about--techs > img {
@@ -226,8 +223,8 @@ button i {
   background-color: currentColor;
 }
 
-.projects > .row {
-  margin-bottom: 2rem;
+.projects > .row:not(:last-of-type) {
+  margin-bottom: 6rem;
 }
 
 .projects--gif {
