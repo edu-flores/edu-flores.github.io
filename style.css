@@ -150,6 +150,7 @@ button i {
   height: 72vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .home--picture {
