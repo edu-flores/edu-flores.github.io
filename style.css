@@ -179,7 +179,7 @@ button i {
 .about--techs {
   width: 65%;
   min-width: 21rem;
-  max-width: 35rem;
+  max-width: 32rem;
   margin: auto;
   display: flex;
   justify-content: space-around;
