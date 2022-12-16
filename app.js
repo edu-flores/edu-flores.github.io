@@ -25,10 +25,12 @@ function toggleTheme() {
 }
 
 const header = document.querySelector(".header");
+const scrollBtn = document.querySelector("#scroll-top");
 
-// Add shadow to header after scrolling
+// Add shadow to header after scrolling & show scroll button
 window.addEventListener("scroll", () => {
   (scrollY > 0) ? header.classList.add("shadow") : header.classList.remove("shadow");
+  (scrollY > 300) ? scrollBtn.style.display = "block" : scrollBtn.style.display = "none";
 });
 
 // Open and close nav
@@ -63,3 +65,8 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+// Scroll to top of the page
+function scrollUp() {
+  window.scrollTo(0, 0);
+}
