@@ -53,12 +53,7 @@ window.addEventListener("scroll", () => {
 // Open and close nav
 const header = document.querySelector(".header");
 function toggleMenu() {
-  if (!header.classList.contains("mobile-open")) {
-    header.classList.add("mobile-open");
-  } 
-  else {
-    header.classList.remove("mobile-open");
-  }
+  header.classList.toggle("mobile-open");
 }
 
 const sections = document.querySelectorAll("section");

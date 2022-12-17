@@ -191,6 +191,7 @@ body {
   background-color: var(--lighter);
   color: var(--darkgray);
   font-family: "Lato", sans-serif;
+  transition: 0.3s ease-in;
 }
 
 ::-webkit-scrollbar {
