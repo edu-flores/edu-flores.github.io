@@ -277,7 +277,12 @@ input:-webkit-autofill {
 }
 
 .shadow {
-  box-shadow: 2.6px 2.6px 2.6px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 2.6px 2.6px 2.6px rgba(0, 0, 0, 0.15);
+}
+
+.filter {
+  filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.15));
+  z-index: -1;
 }
 
 .desktop-display {
@@ -452,6 +457,13 @@ input:-webkit-autofill {
   padding: 1rem;
   margin: 0;
   margin-top: -0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.projects--tech img {
+  width: 25px;
 }
 
 .projects--info {
