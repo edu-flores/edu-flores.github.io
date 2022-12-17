@@ -173,8 +173,8 @@ template {
 :root {
   --light: #f6f6f6;
   --lighter: #fffdfc;
-  --dark: #151515;
-  --darker: #090909;
+  --dark: #1a1a1a;
+  --darker: #151515;
   --lightgray: #c6c6c6;
   --darkgray: #3d3d3d;
   --orange: #eb5937;
@@ -245,12 +245,12 @@ input:-webkit-autofill {
 }
 
 .dark-theme {
-  background-color: var(--darker);
+  background-color: var(--dark);
   color: var(--lightgray);
 }
 
 ::selection {
-  background: var(--dark);
+  background: var(--darker);
   color: var(--light);
 }
 
@@ -535,7 +535,7 @@ input:-webkit-autofill {
   padding: 2rem 0;
   text-indent: 1.8rem;
   margin-bottom: 20px;
-  border: 1px solid var(--darkgray);
+  border: 1px solid currentColor;
   border-radius: 3px;
   font-size: 1.5rem;
   resize: vertical;
