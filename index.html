@@ -162,12 +162,15 @@
         </div>
         <!-- Form -->
         <div class="col-6">
-          <form class="contact--form" action="mailto:eduardo.floresramones@gmail.com" method="post">
+          <form id="contact--form" action="https://formspree.io/f/xbjerdpv" method="post">
             <label for="email">EMAIL ADDRESS</label>
             <input type="email" id="email" name="email" placeholder="eg. example@gmail.com" required>
             <label for="message">MESSAGE</label>
             <textarea name="message" id="message" cols="30" rows="10" placeholder="Please, type here your comments" required></textarea>
-            <button class="btn shadow" type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>
+            <div class="contact--bottom">
+              <button class="btn shadow" type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>
+              <p id="contact--form-status"></p>
+            </div>
           </form>
         </div>
       </div>

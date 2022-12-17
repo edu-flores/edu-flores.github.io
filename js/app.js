@@ -82,3 +82,35 @@ window.addEventListener("scroll", () => {
 function scrollUp() {
   window.scrollTo(0, 0);
 }
+
+const form = document.getElementById("contact--form");
+form.addEventListener("submit", handleSubmit);
+
+// Contact form, using Formspree AJAX method
+async function handleSubmit(event) {
+  event.preventDefault();
+  const status = document.getElementById("contact--form-status");
+  const data = new FormData(event.target);
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: {
+        'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      status.innerHTML = "Sent!";
+      Array.from(form.elements).forEach(element => element.disabled = true);
+    } else {
+      response.json().then(data => {
+        if (Object.hasOwn(data, 'errors')) {
+          status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+        } else {
+          status.innerHTML = "Oops! Try again.";
+        }
+      });
+    }
+  }).catch(error => {
+    status.innerHTML = "Oops! Try again.";
+  });
+}

@@ -532,19 +532,19 @@ input:-webkit-autofill {
   color: var(--orange);
 }
 
-.contact--form label {
+#contact--form label {
   display: block;
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
-.contact--form label::after {
+#contact--form label::after {
   content: " *";
   color: var(--red);
 }
 
-.contact--form input, textarea {
+#contact--form input, #contact--form textarea {
   background-color: transparent;
   color: currentColor;
   display: block;
@@ -558,10 +558,20 @@ input:-webkit-autofill {
   resize: vertical;
 }
 
-.contact--form button {
+#contact--form button {
   background-color: var(--orange);
   color: var(--lighter);
   border: 2px solid var(--orange);
+}
+
+.contact--bottom {
+  display: flex;
+}
+
+#contact--form-status {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 2rem;
 }
 
 /* Footer */
