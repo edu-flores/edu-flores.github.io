@@ -233,7 +233,7 @@ input:-webkit-autofill {
 .bg-text {
   z-index: -1;
   position: absolute;
-  font-size: 25rem;
+  font-size: 22rem;
   font-weight: bold;
   font-family: Garamond, serif;
   user-select: none;
