@@ -60,14 +60,13 @@ const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".navbar--link");
 
 // Highlight current section in nav
+const windowHeight = window.innerHeight;
 window.addEventListener("scroll", () => {
-  
   let current;
   sections.forEach(section => {
-    const sectionPos = section.offsetTop;
-    if (scrollY >= sectionPos) {
+    const sectionPos = section.offsetTop ;
+    if (scrollY + (windowHeight / 2) >= sectionPos) {
       current = section.getAttribute("id");
-      return;
     }
   });
 
