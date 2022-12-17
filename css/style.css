@@ -290,6 +290,16 @@ input:-webkit-autofill {
   display: none;
 }
 
+.blink {
+  animation: blink-animation 1s steps(1) infinite;
+}
+
+@keyframes blink-animation {
+  50% {
+    opacity: 0;
+  }
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
