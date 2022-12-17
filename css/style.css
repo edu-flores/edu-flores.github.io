@@ -256,7 +256,7 @@ input:-webkit-autofill {
 }
 
 #scroll-top {
-  display: none;
+  opacity: 0;
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -267,6 +267,7 @@ input:-webkit-autofill {
   background-color: var(--orange);
   color: var(--lighter);
   border: 2px solid var(--orange);
+  transition: 0.3s ease-in;
 }
 
 /* Utilities */

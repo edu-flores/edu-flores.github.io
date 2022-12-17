@@ -47,7 +47,7 @@ function toggleTheme() {
 // Show scroll to top button
 const scrollBtn = document.querySelector("#scroll-top");
 window.addEventListener("scroll", () => {
-  (scrollY > 300) ? scrollBtn.style.display = "block" : scrollBtn.style.display = "none";
+  (scrollY > 300) ? scrollBtn.style.opacity = "1" : scrollBtn.style.opacity = "0";
 });
 
 // Open and close nav
