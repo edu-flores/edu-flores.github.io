@@ -439,8 +439,12 @@ input:-webkit-autofill {
   background-color: currentColor;
 }
 
-.projects > .row:not(:last-of-type) {
+.projects--container .row:not(:last-of-type) {
   margin-bottom: 6rem;
+}
+
+.projects--container {
+  margin-bottom: 4rem;
 }
 
 .projects--gif {
@@ -471,15 +475,19 @@ input:-webkit-autofill {
   margin: auto;
 }
 
-.row:nth-child(even) .projects--info {
+.projects--container .row:nth-child(even) .projects--info {
   text-align: end;
-  margin-bottom: 2rem;
+}
+
+.projects--desc {
+  margin-bottom: 4rem;
 }
 
 .projects--btn {
   background-color: inherit;
   color: currentColor;
   border: 2px solid var(--orange);
+  text-decoration: none;
 }
 
 .projects--bottom-txt {
