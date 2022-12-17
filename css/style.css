@@ -173,8 +173,8 @@ template {
 :root {
   --light: #f6f6f6;
   --lighter: #fffdfc;
-  --dark: #151515;
-  --darker: #090909;
+  --dark: #1a1a1a;
+  --darker: #151515;
   --lightgray: #c6c6c6;
   --darkgray: #3d3d3d;
   --orange: #eb5937;
@@ -191,6 +191,7 @@ body {
   background-color: var(--lighter);
   color: var(--darkgray);
   font-family: "Lato", sans-serif;
+  transition: 0.3s ease-in;
 }
 
 ::-webkit-scrollbar {
@@ -233,7 +234,7 @@ input:-webkit-autofill {
 .bg-text {
   z-index: -1;
   position: absolute;
-  font-size: 25rem;
+  font-size: 22rem;
   font-weight: bold;
   font-family: Garamond, serif;
   user-select: none;
@@ -245,12 +246,12 @@ input:-webkit-autofill {
 }
 
 .dark-theme {
-  background-color: var(--darker);
+  background-color: var(--dark);
   color: var(--lightgray);
 }
 
 ::selection {
-  background: var(--dark);
+  background: var(--darker);
   color: var(--light);
 }
 
@@ -277,7 +278,12 @@ input:-webkit-autofill {
 }
 
 .shadow {
-  box-shadow: 2.6px 2.6px 2.6px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 2.6px 2.6px 2.6px rgba(0, 0, 0, 0.15);
+}
+
+.filter {
+  filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.15));
+  z-index: -1;
 }
 
 .desktop-display {
@@ -434,8 +440,12 @@ input:-webkit-autofill {
   background-color: currentColor;
 }
 
-.projects > .row:not(:last-of-type) {
+.projects--container .row:not(:last-of-type) {
   margin-bottom: 6rem;
+}
+
+.projects--container {
+  margin-bottom: 4rem;
 }
 
 .projects--gif {
@@ -452,6 +462,13 @@ input:-webkit-autofill {
   padding: 1rem;
   margin: 0;
   margin-top: -0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.projects--tech img {
+  width: 25px;
 }
 
 .projects--info {
@@ -459,15 +476,19 @@ input:-webkit-autofill {
   margin: auto;
 }
 
-.row:nth-child(even) .projects--info {
+.projects--container .row:nth-child(even) .projects--info {
   text-align: end;
-  margin-bottom: 2rem;
+}
+
+.projects--desc {
+  margin-bottom: 4rem;
 }
 
 .projects--btn {
   background-color: inherit;
   color: currentColor;
   border: 2px solid var(--orange);
+  text-decoration: none;
 }
 
 .projects--bottom-txt {
@@ -515,7 +536,7 @@ input:-webkit-autofill {
   padding: 2rem 0;
   text-indent: 1.8rem;
   margin-bottom: 20px;
-  border: 1px solid var(--darkgray);
+  border: 1px solid currentColor;
   border-radius: 3px;
   font-size: 1.5rem;
   resize: vertical;

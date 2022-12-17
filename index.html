@@ -44,14 +44,14 @@
         <div class="col-6">
           <!-- Main Picture -->
           <div class="home--picture">
-            <img src="./images/profile.png" alt="Profile" />
+            <img class="filter" src="./images/profile.png" alt="Profile" />
           </div>
         </div>
       </div>
     </section>
     <!-- About -->
     <section id="about" class="about">
-      <span class="bg-text desktop-display" style="left: 60px;">About.</span>
+      <span class="bg-text desktop-display" style="left: 6rem; top: 90rem;">About.</span>
       <div class="row">
         <!-- About Me -->
         <div class="col-6">
@@ -68,17 +68,17 @@
         <!-- Tech Stack -->
         <div class="col-6">
           <div class="about--techs">
-            <img src="./images/html.svg" alt="HTML5">
-            <img src="./images/react.svg" alt="React">
-            <img src="./images/vue.svg" alt="Vue">
-            <img src="./images/sass.svg" alt="Sass">
-            <img src="./images/tailwind.svg" alt="Tailwind">
-            <img src="./images/bootstrap.svg" alt="Bootstrap">
-            <img src="./images/javascript.svg" alt="Javascript">
-            <img src="./images/typescript.svg" alt="Typescript">
-            <img src="./images/mysql.svg" alt="MySQL">
-            <img src="./images/git.svg" alt="Git">
-            <img src="./images/python.svg" alt="Python">
+            <img class="filter" src="./images/html.svg" alt="HTML5">
+            <img class="filter" src="./images/react.svg" alt="React">
+            <img class="filter" src="./images/vue.svg" alt="Vue">
+            <img class="filter" src="./images/sass.svg" alt="Sass">
+            <img class="filter" src="./images/tailwind.svg" alt="Tailwind">
+            <img class="filter" src="./images/bootstrap.svg" alt="Bootstrap">
+            <img class="filter" src="./images/javascript.svg" alt="Javascript">
+            <img class="filter" src="./images/typescript.svg" alt="Typescript">
+            <img class="filter" src="./images/mysql.svg" alt="MySQL">
+            <img class="filter" src="./images/git.svg" alt="Git">
+            <img class="filter" src="./images/python.svg" alt="Python">
           </div>
         </div>
       </div>
@@ -91,48 +91,55 @@
     </section>
     <!-- Projects -->
     <section id="projects" class="projects">
-      <span class="bg-text desktop-display" style="right: 60px;">Projects.</span>
+      <span class="bg-text desktop-display" style="right: 6rem; top: 160rem;">Projects.</span>
       <div class="projects--cmd">
         <p>
           <code class="projects--code">cd '.\My work\'<span id="cursor">&nbsp;</span></code>
         </p>
       </div>
       <!-- Project List -->
-      <div class="row">
-        <div class="col-7">
-          <!-- GIF -->
-          <img class="projects--gif" src="https://i.gifer.com/A8gJ.gif" alt="Project">
-          <p class="projects--tech">
-            <i>HTML5, CSS3, JavaScript, Vue, Bootstrap</i>
-          </p>
-        </div>
-        <div class="col-5">
-          <!-- Info -->
-          <div class="projects--info">
-            <h3 class="projects--title">Project 1</h3>
-            <p class="projects--desc">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, fugiat magnam! Fugiat tempore deleniti esse beatae. Sunt ipsam blanditiis nulla?
-            </p>
-            <button class="btn projects--btn" type="button"><i class="fa-solid fa-up-right-from-square"></i>&nbsp;Source</button>
+      <div class="projects--container">
+        <div class="row">
+          <div class="col-7 filter">
+            <!-- GIF -->
+            <img class="projects--gif" src="https://i.gifer.com/A8gJ.gif" alt="Project">
+            <div class="projects--tech">
+              <img class="filter" src="./images/html.svg" alt="HTML5">
+              <img class="filter" src="./images/css.svg" alt="CSS3">
+              <img class="filter" src="./images/javascript.svg" alt="Javascript">
+            </div>
+          </div>
+          <div class="col-5">
+            <!-- Info -->
+            <div class="projects--info">
+              <h3 class="projects--title">Portfolio Site</h3>
+              <p class="projects--desc">
+                This website! Mobile-first design, using only vanilla HTML5, CSS3 and JS.
+                Developed in order to show off my projects and display some contact information.
+              </p>
+              <a class="btn projects--btn shadow" href="https://github.com/edu-flores/edu-flores.github.io" target="_blank"><i class="fa-solid fa-up-right-from-square"></i>&nbsp;Source</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-7">
-          <!-- GIF -->
-          <img class="projects--gif" src="https://i.gifer.com/A8gJ.gif" alt="Project">
-          <p class="projects--tech">
-            <i>HTML5, CSS3, JavaScript, Vue, Bootstrap</i>
-          </p>
-        </div>
-        <div class="col-5">
-          <!-- Info -->
-          <div class="projects--info">
-            <h3 class="projects--title">Project 2</h3>
-            <p class="projects--desc">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, fugiat magnam! Fugiat tempore deleniti esse beatae. Sunt ipsam blanditiis nulla?
-            </p>
-            <button class="btn projects--btn" type="button"><i class="fa-solid fa-up-right-from-square"></i>&nbsp;Source</button>
+        <div class="row">
+          <div class="col-7 filter">
+            <!-- GIF -->
+            <img class="projects--gif" src="https://i.gifer.com/A8gJ.gif" alt="Project">
+            <div class="projects--tech">
+              <img class="filter" src="./images/react.svg" alt="React">
+              <img class="filter" src="./images/typescript.svg" alt="Typescript">
+              <img class="filter" src="./images/tailwind.svg" alt="Tailwind">
+            </div>
+          </div>
+          <div class="col-5">
+            <!-- Info -->
+            <div class="projects--info">
+              <h3 class="projects--title">Project 2</h3>
+              <p class="projects--desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, fugiat magnam! Fugiat tempore deleniti esse beatae. Sunt ipsam blanditiis nulla?
+              </p>
+              <a class="btn projects--btn shadow" target="_blank"><i class="fa-solid fa-up-right-from-square"></i>&nbsp;Source</a>
+            </div>
           </div>
         </div>
       </div>
@@ -140,7 +147,7 @@
     </section>
     <!-- Contact -->
     <section id="contact" class="contact">
-      <span class="bg-text desktop-display" style="left: 60px;">Contact.</span>
+      <span class="bg-text desktop-display" style="left: 6rem; top: 280rem;">Contact.</span>
       <div class="row">
         <!-- Contact Text -->
         <div class="col-6">
@@ -158,7 +165,7 @@
             <input type="email" id="email" name="email" placeholder="eg. example@gmail.com" required>
             <label for="message">MESSAGE</label>
             <textarea name="message" id="message" cols="30" rows="10" placeholder="Please, type here your comments" required></textarea>
-            <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>
+            <button class="btn shadow" type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send</button>
           </form>
         </div>
       </div>
@@ -181,7 +188,7 @@
       <p class="footer--copy">&#169; 2022. Design by EFR.</p>
     </footer>
     <!-- Scroll to Top -->
-    <button onclick="scrollUp()" id="scroll-top"><i class="fa-solid fa-up-long"></i></button>
+    <button onclick="scrollUp()" id="scroll-top" class="shadow"><i class="fa-solid fa-up-long"></i></button>
 
     <!-- Main Script -->
     <script src="./js/app.js"></script>
