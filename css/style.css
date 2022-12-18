@@ -454,6 +454,8 @@ input:-webkit-autofill {
 
 #cursor {
   background-color: currentColor;
+  position: relative;
+  z-index: -1;
 }
 
 .projects--container .row:not(:last-of-type) {
