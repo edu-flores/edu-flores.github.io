@@ -26,20 +26,28 @@ if (!theme) {
 }
 
 // Apply theme
+const lightFiles = document.querySelector("#about--files-light");
+const darkFiles = document.querySelector("#about--files-dark");
 theme = localStorage.getItem("theme");
 if (theme == "dark") {
   document.body.classList.add("dark-theme");
+  darkFiles.style.display = "initial";
+} else {
+  light.style.display = "initial";
 }
 
 // Toggle theme
 function toggleTheme() {
+  document.body.classList.toggle("dark-theme");
   if (theme == "light") {
-    document.body.classList.add("dark-theme");
     localStorage.setItem("theme", "dark");
+    lightFiles.style.display = "none";
+    darkFiles.style.display = "initial";
     theme = "dark";
   } else {
-    document.body.classList.remove("dark-theme");
     localStorage.setItem("theme", "light");
+    lightFiles.style.display = "initial";
+    darkFiles.style.display = "none";
     theme = "light";
   }
 }

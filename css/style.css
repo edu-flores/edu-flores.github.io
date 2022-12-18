@@ -438,6 +438,10 @@ input:-webkit-autofill {
   font-weight: bold;
 }
 
+[id*="about--files"] {
+  display: none;
+}
+
 /* Projects */
 
 .projects--code::before {
