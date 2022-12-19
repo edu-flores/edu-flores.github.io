@@ -272,6 +272,31 @@ input:-webkit-autofill {
 
 /* Utilities */
 
+.tooltip {
+  position: relative;
+}
+
+.tooltiptext {
+  display: none;
+  width: 120px;
+  background-color: var(--bg-color);
+  color: var(--color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 5px 0;
+  z-index: 1;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  display: initial;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -326,6 +351,7 @@ input:-webkit-autofill {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
 }
 
 .navbar {
@@ -419,7 +445,7 @@ input:-webkit-autofill {
   column-gap: 2rem;
 }
 
-.about--techs > img {
+.about--techs img {
   width: 5rem;
 }
 
