@@ -406,6 +406,7 @@ input:-webkit-autofill {
 
 .home {
   height: 72vh;
+  min-height: 50rem;
   display: flex;
   align-items: center;
   justify-content: center;
