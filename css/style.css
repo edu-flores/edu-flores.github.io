@@ -221,8 +221,7 @@ input:-webkit-autofill {
 
 .btn {
   cursor: pointer;
-  padding: 1.2rem 3rem;
-  min-width: 14rem;
+  padding: 1.2rem 1.8rem;
   border-radius: 1rem;
   font-size: 1.5rem;
 }
@@ -520,9 +519,8 @@ input:-webkit-autofill {
   width: 25px;
 }
 
-.projects--info {
-  width: 90%;
-  margin: auto;
+.projects--info a + a {
+  margin-left: 0.5rem;
 }
 
 .projects--container .row:nth-child(even) .projects--info {
@@ -533,11 +531,24 @@ input:-webkit-autofill {
   margin-bottom: 4rem;
 }
 
-.projects--btn {
+.projects--btn-src {
+  text-align: center;
+  white-space: nowrap;
   background-color: inherit;
   color: currentColor;
   border: 2px solid var(--orange);
   text-decoration: none;
+  width: 10rem;
+}
+
+.projects--btn-site {
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--orange);
+  color: var(--lighter);
+  border: 2px solid var(--orange);
+  text-decoration: none;
+  width: 10rem;
 }
 
 .projects--bottom-txt {
@@ -595,6 +606,7 @@ input:-webkit-autofill {
   background-color: var(--orange);
   color: var(--lighter);
   border: 2px solid var(--orange);
+  width: 14rem;
 }
 
 .contact--bottom {
@@ -673,4 +685,8 @@ input:-webkit-autofill {
 
 @media only screen and (min-width: 992px) {
   .desktop-display {display: initial;}
+}
+
+@media only screen and (min-width: 992px) {
+  .projects--info {padding: 0 2rem;}
 }
