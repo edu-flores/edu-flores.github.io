@@ -33,7 +33,7 @@ if (theme == "dark") {
   document.body.classList.add("dark-theme");
   darkFiles.style.display = "initial";
 } else {
-  light.style.display = "initial";
+  lightFiles.style.display = "initial";
 }
 
 // Toggle theme
