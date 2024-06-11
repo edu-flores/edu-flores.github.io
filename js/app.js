@@ -103,7 +103,7 @@ async function handleSubmit(event) {
     method: form.method,
     body: data,
     headers: {
-        'Accept': 'application/json'
+      "Accept": "application/json"
     }
   }).then(response => {
     if (response.ok) {
