@@ -362,7 +362,7 @@ input:-webkit-autofill {
   flex-direction: column;
   align-items: center;
   row-gap: 1.4rem;
-  padding-bottom: 1.4rem;
+  padding: 1.4rem 0;
   width: 100%;
   font-size: 1.5rem;
 }
@@ -383,6 +383,13 @@ input:-webkit-autofill {
 
 .mobile-open nav {
   display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.mobile-open a {
+  margin-top: 1rem;
 }
 
 .header--logo {
