@@ -290,6 +290,7 @@ input:-webkit-autofill {
   bottom: 100%;
   left: 50%;
   margin-left: -60px;
+  margin-bottom: 5px;
 }
 
 .tooltip:hover .tooltiptext {
@@ -302,13 +303,16 @@ input:-webkit-autofill {
   align-items: center;
 }
 
-.shadow {
+.box-shadow {
   box-shadow: 2.6px 2.6px 2.6px rgba(0, 0, 0, 0.15);
 }
 
-.filter {
+.drop-shadow {
   filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.15));
-  z-index: -1;
+}
+
+.dark-theme .invertable {
+  filter: invert();
 }
 
 .desktop-display {
@@ -435,8 +439,8 @@ input:-webkit-autofill {
 .about--techs {
   width: 65%;
   margin: auto;
-  min-width: 21rem;
-  max-width: 32rem;
+  min-width: 20rem;
+  max-width: 50rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
