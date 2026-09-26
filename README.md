@@ -1,13 +1,46 @@
-<br>
-<div align="center">
-    <img width="50" src="./images/favicon.ico" alt="Logo">
-    <h1>Personal Portfolio</h1>
-    <h3>Eduardo Flores Ramones</h3>
-</div>
-<br>
+# Astro Starter Kit: Basics
 
-A website I developed with pure vanilla `HTML5`, `CSS3` and `JavaScript`. A mobile-first design paradigm was taken into consideration while creating the site. Here, I'll store my projects and display my contact information.
+```sh
+pnpm create astro@latest -- --template basics
+```
 
-Initial Figma design: [Click](https://www.figma.com/file/bH7hTXvHlq1NUDmqLl5abM/Portfolio?node-id=0%3A1&t=vyxrHbdmA1bwgcVV-1)
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-![Portfolio Demo](./images/portfolio.gif)
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
+
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `pnpm install`             | Installs dependencies                            |
+| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm build`           | Build your production site to `./dist/`          |
+| `pnpm preview`         | Preview your build locally, before deploying     |
+| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
