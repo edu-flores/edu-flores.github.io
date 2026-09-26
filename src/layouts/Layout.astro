@@ -5,20 +5,20 @@ import "../styles/globals.css";
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<script is:inline>
-  			const savedTheme = localStorage.getItem("theme");
-			const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  			document.documentElement.dataset.theme = savedTheme || systemTheme;
-		</script>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Eduardo Flores</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    <head>
+        <script is:inline>
+            const savedTheme = localStorage.getItem("theme");
+            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            document.documentElement.dataset.theme = savedTheme || systemTheme;
+        </script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Eduardo Flores</title>
+    </head>
+    <body>
+        <slot />
+    </body>
 </html>
