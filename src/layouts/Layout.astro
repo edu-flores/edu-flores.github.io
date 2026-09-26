@@ -1,6 +1,15 @@
+---
+import "../styles/globals.css";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
+		<script is:inline>
+  			const savedTheme = localStorage.getItem("theme");
+			const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  			document.documentElement.dataset.theme = savedTheme || systemTheme;
+		</script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -12,11 +21,3 @@
 		<slot />
 	</body>
 </html>
-
-<style>
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	}
-</style>
