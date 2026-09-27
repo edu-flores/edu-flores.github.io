@@ -1,9 +1,13 @@
+---
+import Navbar from "./Navbar.astro";
+import Me from "./Me.astro";
+import Footer from "./Footer.astro";
+---
+
 <main>
-    <h1>Eduardo Flores</h1>
-    <div>
-        <span>Software Engineer II</span>
-        <span>Mty, Mexico</span>
-    </div>
+    <Navbar />
+    <Me />
+    <Footer />
 </main>
 
 <style>
@@ -14,5 +18,9 @@
         min-height: 100vh;
         margin-inline: auto;
         padding: 1rem 2rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 </style>
