@@ -1,12 +1,40 @@
-<div>
-    <h1>Eduardo Flores</h1>
+---
+import Section from "./Section.astro";
+import Chapter from "./Chapter.astro";
+---
+
+<div id="me">
     <div>
-        <span>Software Engineer II</span>
-        <span>Mty, Mexico</span>
+        <h1>Eduardo Flores</h1>
+        <div>
+            <span>Software Engineer II</span>
+            <span>Mty, Mexico</span>
+        </div>
+        <p class="muted">
+            The internet won my heart as a kid; now I work in <b>tech</b> (so curious to see where it's heading!).
+            I enjoy exercising, playing guitar, and reading books.
+        </p>
     </div>
 
-    <p>
-        The internet won my heart as a kid; now I work in tech (so curious to see where it's heading!).
-        I enjoy exercising, playing guitar, and reading books.
-    </p>
+    <Section title="Experience">
+        <Chapter name="Etsy" focus="Software Engineer II" period="Dec 2025 – Present" />
+        <Chapter name="Reverb" focus="Software Engineer II" period="May 2025 – Dec 2025" />
+        <Chapter name="Katcon" focus="Software Engineer" period="Oct 2023 – Mar 2024" />
+    </Section>
+
+    <Section title="Education">
+        <Chapter name="UDEM" focus="B.S. in Computer Science" period="Aug 2020 – Dec 2024" />
+    </Section>
+
+    <Section title="Technologies">
+        <p class="muted">Python, TypeScript, AWS, React, Tailwind, PostgreSQL</p>
+    </Section>
 </div>
+
+<style>
+    #me {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+</style>
