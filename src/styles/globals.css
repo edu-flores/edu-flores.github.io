@@ -34,6 +34,16 @@ b, strong {
     font-weight: bold;
 }
 
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: unset;
+}
+
 /* Utility */
 
 .muted {

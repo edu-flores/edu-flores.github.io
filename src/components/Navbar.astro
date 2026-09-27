@@ -1,12 +1,23 @@
+---
+import SettingsIcon from "../assets/icons/settings.svg";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
 <nav>
-    <button id="highlight-wave">Logo</button>
+    <button id="highlight-wave">
+        <b>ed</b>fl
+    </button>
 
-    <div>
-        <a href="/about">About</a>
-        <a href="/projects">Projects</a>
-        <a href="/other">Other</a>
+    <div id="links">
+        <a href="/about" class:list={{ active: currentPath === "about" }}>About</a>
+        <a href="/projects" class:list={{ active: currentPath === "projects" }}>Projects</a>
+        <a href="/other" class:list={{ active: currentPath === "other" }}>Other</a>
 
-        <button>Settings</button>
+        <button>
+            <SettingsIcon stroke="var(--fg)" width="22" height="22" />
+        </button>
     </div>
 </nav>
 
@@ -16,7 +27,19 @@
         justify-content: space-between;
     }
 
-    a {
+    #highlight-wave {
+        font-size: 1rem;
+    }
+
+    #links {
+        color: var(--fg-muted);
         text-transform: lowercase;
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .active {
+        color: var(--fg);
+        font-weight: bold;
     }
 </style>
