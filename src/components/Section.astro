@@ -1,0 +1,15 @@
+---
+const { title } = Astro.props;
+---
+
+<section>
+    <h2 class="muted">{title}</h2>
+    <slot />
+</section>
+
+<style>
+    h2 {
+        font-weight: normal;
+        margin-bottom: 0.4rem;
+    }
+</style>

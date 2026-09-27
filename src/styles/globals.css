@@ -1,13 +1,10 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* Theme */
 
 :root {
     color-scheme: light dark;
     --bg: light-dark(#fff, #000);
     --fg: light-dark(#000, #fff);
+    --fg-muted: light-dark(#000000d0, #ffffffd0);
 }
 
 [data-theme="light"] {
@@ -18,8 +15,27 @@
     color-scheme: dark;
 }
 
+/* General */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: "Inter", sans-serif;
     background-color: var(--bg);
     color: var(--fg);
+}
+
+b {
+    color: var(--fg);
+    font-weight: bold;
+}
+
+/* Utility */
+
+.muted {
+    color: var(--fg-muted);
 }

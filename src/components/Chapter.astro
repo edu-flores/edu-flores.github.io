@@ -1,0 +1,25 @@
+---
+const { name, focus, period } = Astro.props;
+---
+
+<div id="chapter">
+    <img src="https://placehold.co/15x15" />
+    <div id="text" class="muted">
+        <span><b>{name}</b> | {focus}</span>
+        <span>{period}</span>
+    </div>
+</div>
+
+<style>
+    #chapter {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 0.4rem;
+    }
+
+    #text {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+</style>
