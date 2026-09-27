@@ -1,6 +1,8 @@
 ---
 import "@fontsource/inter";
 import "../styles/globals.css";
+import Background from "../components/Background.astro";
+import Container from "../components/Container.astro";
 ---
 
 <!doctype html>
@@ -19,6 +21,9 @@ import "../styles/globals.css";
         <title>Eduardo Flores</title>
     </head>
     <body>
-        <slot />
+        <Background />
+        <Container>
+            <slot />
+        </Container>
     </body>
 </html>
