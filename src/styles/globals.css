@@ -29,7 +29,7 @@ body {
     color: var(--fg);
 }
 
-b {
+b, strong {
     color: var(--fg);
     font-weight: bold;
 }
