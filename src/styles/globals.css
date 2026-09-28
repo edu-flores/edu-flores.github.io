@@ -49,3 +49,11 @@ a {
 .loud {
     color: var(--fg);
 }
+
+/* Responsiveness */
+
+@media (max-width: 576px) {
+  .sm {
+    display: none;
+  }
+}
