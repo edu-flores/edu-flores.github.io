@@ -8,6 +8,7 @@ import ReverbImage from "../assets/imgs/reverb.png";
 import KatconImage from "../assets/imgs/katcon.png";
 import UdemImage from "../assets/imgs/udem.png";
 
+// https://hugeicons.com
 import LocationIcon from "../assets/icons/location.svg";
 import PythonIcon from "../assets/icons/python.svg";
 import TypeScriptIcon from "../assets/icons/typescript.svg";
@@ -66,12 +67,12 @@ const technologies = [
 
 <div id="me">
     <div>
-        <h1 class="loud">Eduardo Flores</h1>
+        <h1 id="title" class="loud">Eduardo Flores</h1>
         <div id="subtitle" class="loud">
             <span>Software Engineer II</span>
             <span id="location">
                 <LocationIcon stroke="var(--fg)" width="22" height="22" />
-                Mty, Mexico
+                <a href="https://maps.app.goo.gl/SCTv6cgUrtDaRkgt9" target="_blank">Mty, Mexico</a>
             </span>
         </div>
 
@@ -107,10 +108,15 @@ const technologies = [
         gap: 1.5rem;
     }
 
+    #title {
+        font-size: 1.5rem;
+    }
+
     #subtitle {
+        font-size: 1.1rem;
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.5rem;
         margin-bottom: 1rem;
     }
 

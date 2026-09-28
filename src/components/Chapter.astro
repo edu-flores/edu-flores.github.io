@@ -8,7 +8,7 @@ const { image, link, primary, secondary, period } = Astro.props;
     <Image src={image} alt="Logo" width="20" height="20" />
     <div id="text">
         <span><b><a href={link} target="_blank">{primary}</a></b> | {secondary}</span>
-        <span>{period}</span>
+        <span id="period">{period}</span>
     </div>
 </div>
 
@@ -26,5 +26,9 @@ const { image, link, primary, secondary, period } = Astro.props;
         display: flex;
         justify-content: space-between;
         width: 100%;
+    }
+
+    #period {
+        font-size: 14px;
     }
 </style>
