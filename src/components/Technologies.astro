@@ -1,0 +1,45 @@
+---
+import PythonIcon from "../assets/icons/python.svg";
+import TypeScriptIcon from "../assets/icons/typescript.svg";
+import SqlIcon from "../assets/icons/sql.svg";
+import TailwindIcon from "../assets/icons/tailwind.svg";
+import ReactIcon from "../assets/icons/react.svg";
+import CloudIcon from "../assets/icons/cloud.svg";
+import BashIcon from "../assets/icons/bash.svg";
+import GoIcon from "../assets/icons/go.svg";
+
+const technologies = [
+    { icon: PythonIcon, name: "Python" },
+    { icon: TypeScriptIcon, name: "TypeScript" },
+    { icon: SqlIcon, name: "PostgreSQL" },
+    { icon: TailwindIcon, name: "Tailwind" },
+    { icon: ReactIcon, name: "React" },
+    { icon: CloudIcon, name: "AWS/GCP" },
+    { icon: BashIcon, name: "Bash" },
+    { icon: GoIcon, name: "Go" },
+];
+---
+
+<div id="technologies">
+    {technologies.map(({ icon: Icon, name }) => (
+        <div id="badge">
+            <Icon stroke="var(--fg)" width="22" height="22" />
+            <span>{name}</span>
+        </div>
+    ))}
+</div>
+
+<style>
+    #technologies {
+        color: var(--fg-muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+
+    #badge {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+</style>
