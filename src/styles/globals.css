@@ -26,7 +26,7 @@
 body {
     font-family: "Inter", sans-serif;
     background-color: var(--bg);
-    color: var(--fg);
+    color: var(--fg-muted);
 }
 
 b, strong {
@@ -46,6 +46,6 @@ a {
 
 /* Utility */
 
-.muted {
-    color: var(--fg-muted);
+.loud {
+    color: var(--fg);
 }

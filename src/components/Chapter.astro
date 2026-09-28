@@ -1,11 +1,13 @@
 ---
-const { name, focus, period } = Astro.props;
+import { Image } from 'astro:assets';
+
+const { image, link, primary, secondary, period } = Astro.props;
 ---
 
 <div id="chapter">
-    <img src="https://placehold.co/15x15" />
-    <div id="text" class="muted">
-        <span><b>{name}</b> | {focus}</span>
+    <Image src={image} alt="Logo" width="20" height="20" />
+    <div id="text">
+        <span><b><a href={link} target="_blank">{primary}</a></b> | {secondary}</span>
         <span>{period}</span>
     </div>
 </div>
@@ -14,7 +16,10 @@ const { name, focus, period } = Astro.props;
     #chapter {
         display: flex;
         gap: 0.5rem;
-        margin-bottom: 0.3rem;
+    }
+
+    #chapter:not(:last-child) {
+        margin-bottom: 0.5rem;
     }
 
     #text {
