@@ -1,14 +1,73 @@
 ---
 import Section from "./Section.astro";
 import Chapter from "./Chapter.astro";
-import Technologies from "./Technologies.astro";
+import Technology from "./Technology.astro";
+
+import EtsyImage from "../assets/imgs/etsy.png";
+import ReverbImage from "../assets/imgs/reverb.png";
+import KatconImage from "../assets/imgs/katcon.png";
+import UdemImage from "../assets/imgs/udem.png";
+
 import LocationIcon from "../assets/icons/location.svg";
+import PythonIcon from "../assets/icons/python.svg";
+import TypeScriptIcon from "../assets/icons/typescript.svg";
+import SqlIcon from "../assets/icons/sql.svg";
+import TailwindIcon from "../assets/icons/tailwind.svg";
+import ReactIcon from "../assets/icons/react.svg";
+import CloudIcon from "../assets/icons/cloud.svg";
+import BashIcon from "../assets/icons/bash.svg";
+import GoIcon from "../assets/icons/go.svg";
+
+const experience = [
+  {
+    image: EtsyImage,
+    link: "https://www.etsy.com",
+    primary: "Etsy",
+    secondary: "Software Engineer II",
+    period: "Dec 2025 – Present",
+  },
+  {
+    image: ReverbImage,
+    link: "https://reverb.com",
+    primary: "Reverb",
+    secondary: "Software Engineer II",
+    period: "May 2025 – Dec 2025",
+  },
+  {
+    image: KatconImage,
+    link: "https://katcon.com",
+    primary: "Katcon",
+    secondary: "Software Engineer",
+    period: "Oct 2023 – Mar 2025",
+  },
+];
+
+const education = [
+  {
+    image: UdemImage,
+    link: "https://www.udem.edu.mx",
+    primary: "UDEM",
+    secondary: "B.S. in Computer Science",
+    period: "Aug 2020 – Dec 2024",
+  },
+];
+
+const technologies = [
+    { icon: PythonIcon, name: "Python" },
+    { icon: TypeScriptIcon, name: "TypeScript" },
+    { icon: SqlIcon, name: "PostgreSQL" },
+    { icon: TailwindIcon, name: "Tailwind" },
+    { icon: ReactIcon, name: "React" },
+    { icon: CloudIcon, name: "AWS/GCP" },
+    { icon: BashIcon, name: "Bash" },
+    { icon: GoIcon, name: "Go" },
+];
 ---
 
 <div id="me">
     <div>
-        <h1>Eduardo Flores</h1>
-        <div id="subtitle">
+        <h1 class="loud">Eduardo Flores</h1>
+        <div id="subtitle" class="loud">
             <span>Software Engineer II</span>
             <span id="location">
                 <LocationIcon stroke="var(--fg)" width="22" height="22" />
@@ -16,24 +75,28 @@ import LocationIcon from "../assets/icons/location.svg";
             </span>
         </div>
 
-        <p class="muted">
-            The internet won my heart as a kid; now I <strong>work in tech</strong> (so curious to see where it's heading!).
-            I enjoy exercising, playing guitar, and reading books.
+        <p>
+            The internet won my heart as a kid; now I <strong>work in tech</strong> (so curious to
+            see where it's heading!). I enjoy exercising, playing guitar, and reading books.
         </p>
     </div>
 
     <Section title="Experience">
-        <Chapter name="Etsy" focus="Software Engineer II" period="Dec 2025 – Present" />
-        <Chapter name="Reverb" focus="Software Engineer II" period="May 2025 – Dec 2025" />
-        <Chapter name="Katcon" focus="Software Engineer" period="Oct 2023 – Mar 2024" />
+        {experience.map((exp) => (
+            <Chapter {...exp} />
+        ))}
     </Section>
 
     <Section title="Education">
-        <Chapter name="UDEM" focus="B.S. in Computer Science" period="Aug 2020 – Dec 2024" />
+        {education.map((edu) => (
+            <Chapter {...edu} />
+        ))}
     </Section>
 
     <Section title="Technologies">
-        <Technologies />
+        {technologies.map((tech) => (
+            <Technology {...tech} />
+        ))}
     </Section>
 </div>
 
@@ -48,7 +111,7 @@ import LocationIcon from "../assets/icons/location.svg";
         display: flex;
         align-items: center;
         gap: 1rem;
-        margin-bottom: 0.75rem;
+        margin-bottom: 1rem;
     }
 
     #location {

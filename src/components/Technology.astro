@@ -1,0 +1,16 @@
+---
+const { icon: Icon, name } = Astro.props;
+---
+
+<div id="technology">
+    <Icon stroke="var(--fg)" width="22" height="22" />
+    <span>{name}</span>
+</div>
+
+<style>
+    #technology {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+</style>
