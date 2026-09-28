@@ -2,9 +2,9 @@
 
 :root {
     color-scheme: light dark;
-    --bg: light-dark(#fff, #000);
-    --fg: light-dark(#000, #fff);
-    --fg-muted: light-dark(#000000d0, #ffffffd0);
+    --bg: light-dark(#ebeef5, #050b12);
+    --fg: light-dark(#050b12, #ebeef5);
+    --fg-muted: light-dark(#050b12cc, #ebeef5cc);
 }
 
 [data-theme="light"] {
