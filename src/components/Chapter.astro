@@ -5,27 +5,35 @@ const { image, link, primary, secondary, period } = Astro.props;
 ---
 
 <div id="chapter">
-    <Image src={image} alt="Logo" width="20" height="20" />
-    <div id="text">
-        <span><b><a href={link} target="_blank">{primary}</a></b> | {secondary}</span>
-        <span id="period" class="sm">{period}</span>
+    <div class="flex">
+        <a href={link} target="_blank">
+            <Image src={image} alt="Logo" width="20" height="20" />
+            <span><b>{primary}</b></span>
+        </a>
+        <span id="secondary">{secondary}</span>
     </div>
+
+    <span id="period" class="sm">{period}</span>
 </div>
 
 <style>
     #chapter {
         display: flex;
-        gap: 0.5rem;
+        justify-content: space-between;
     }
 
     #chapter:not(:last-child) {
         margin-bottom: 0.5rem;
     }
 
-    #text {
+    a {
         display: flex;
-        justify-content: space-between;
-        width: 100%;
+        gap: 0.5rem;
+    }
+
+    #secondary::before {
+        content: "|";
+        margin-inline: 0.5rem;
     }
 
     #period {

@@ -5,7 +5,7 @@ const { title } = Astro.props;
 <section>
     <h2>{title}</h2>
 
-    <div id={title.toLowerCase()}>
+    <div id={title.toLowerCase().replaceAll(" ", "-")}>
         <slot />
     </div>
 </section>
