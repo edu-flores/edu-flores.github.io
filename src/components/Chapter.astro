@@ -8,7 +8,7 @@ const { image, link, primary, secondary, period } = Astro.props;
     <Image src={image} alt="Logo" width="20" height="20" />
     <div id="text">
         <span><b><a href={link} target="_blank">{primary}</a></b> | {secondary}</span>
-        <span id="period">{period}</span>
+        <span id="period" class="sm">{period}</span>
     </div>
 </div>
 
