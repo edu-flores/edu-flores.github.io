@@ -15,7 +15,7 @@ const currentPath = pathname.slice(1);
         <a href="/projects" class:list={{ active: currentPath === "projects" }}>Projects</a>
         <a href="/other" class:list={{ active: currentPath === "other" }}>Other</a>
 
-        <button>
+        <button class="flex">
             <SettingsIcon stroke="var(--fg)" width="22" height="22" />
         </button>
     </div>
@@ -30,6 +30,7 @@ const currentPath = pathname.slice(1);
     #links {
         text-transform: lowercase;
         display: flex;
+        align-items: center;
         gap: 1.5rem;
     }
 

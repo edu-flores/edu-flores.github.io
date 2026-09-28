@@ -50,10 +50,20 @@ a {
     color: var(--fg);
 }
 
+.flex {
+    display: flex;
+}
+
 /* Responsiveness */
 
 @media (max-width: 576px) {
   .sm {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .md {
     display: none;
   }
 }
