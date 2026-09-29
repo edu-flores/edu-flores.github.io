@@ -12,33 +12,36 @@ import UdemImage from "../assets/imgs/udem.png";
 import LocationIcon from "../assets/icons/location.svg";
 import PythonIcon from "../assets/icons/python.svg";
 import TypeScriptIcon from "../assets/icons/typescript.svg";
-import DatabaseIcon from "../assets/icons/database.svg";
-import TailwindIcon from "../assets/icons/tailwind.svg";
-import ReactIcon from "../assets/icons/react.svg";
-import CloudIcon from "../assets/icons/cloud.svg";
 import BashIcon from "../assets/icons/bash.svg";
 import PackageIcon from "../assets/icons/package.svg";
+import ReactIcon from "../assets/icons/react.svg";
+import TailwindIcon from "../assets/icons/tailwind.svg";
+import DatabaseIcon from "../assets/icons/database.svg";
+import CloudIcon from "../assets/icons/cloud.svg";
+
+const dob = new Date("2001-07-04");
+const age = new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970;
 
 const experience = [
   {
     image: EtsyImage,
     link: "https://www.etsy.com",
     primary: "Etsy",
-    secondary: "Software Engineer II",
+    secondary: "Infrastructure",
     period: "Dec '25 – Present",
   },
   {
     image: ReverbImage,
     link: "https://reverb.com",
     primary: "Reverb",
-    secondary: "Software Engineer II",
+    secondary: "Revenue",
     period: "May '25 – Dec '25",
   },
   {
     image: KatconImage,
     link: "https://katcon.com",
     primary: "Katcon",
-    secondary: "Software Engineer",
+    secondary: "Digitalization",
     period: "Oct '23 – Mar '25",
   },
 ];
@@ -56,12 +59,12 @@ const education = [
 const technologies = [
     { icon: PythonIcon, name: "Python" },
     { icon: TypeScriptIcon, name: "TypeScript" },
-    { icon: DatabaseIcon, name: "PostgreSQL" },
-    { icon: TailwindIcon, name: "Tailwind" },
-    { icon: ReactIcon, name: "React" },
-    { icon: CloudIcon, name: "AWS/GCP" },
     { icon: BashIcon, name: "Bash" },
     { icon: PackageIcon, name: "Go" },
+    { icon: ReactIcon, name: "React" },
+    { icon: TailwindIcon, name: "Tailwind" },
+    { icon: DatabaseIcon, name: "PostgreSQL" },
+    { icon: CloudIcon, name: "AWS/GCP" },
 ];
 ---
 
@@ -77,8 +80,9 @@ const technologies = [
         </div>
 
         <p>
-            The internet won my heart as a kid; now I <strong>work in tech</strong> (very curious to
-            see where it's heading). I enjoy exercising, playing guitar, and reading books.
+            The internet quickly won my heart as a kid. Now at {age} I <strong>work in tech</strong>,
+            very intrigued by how the field has been changing lately. Outside of work I enjoy playing
+            tennis, learning guitar, and reading books.
         </p>
     </div>
 
