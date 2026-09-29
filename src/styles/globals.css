@@ -67,3 +67,13 @@ a {
     display: none;
   }
 }
+
+/* Animations */
+
+.elevate {
+    transition: transform 0.25s ease;
+}
+
+.elevate:hover {
+    transform: translateY(-2px);
+}
