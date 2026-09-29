@@ -34,8 +34,16 @@ const currentPath = pathname.slice(1);
         gap: 1.5rem;
     }
 
-    .active {
+    #links a {
+        transition: color 0.25s ease;
+    }
+
+    #links a.active {
         color: var(--fg);
         font-weight: bold;
+    }
+
+    #links a:hover {
+        color: var(--fg);
     }
 </style>

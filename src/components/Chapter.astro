@@ -8,7 +8,7 @@ const { image, link, primary, secondary, period } = Astro.props;
     <div class="flex">
         <a href={link} target="_blank">
             <Image src={image} alt="Logo" width="20" height="20" />
-            <span><b>{primary}</b></span>
+            <span class="primary">{primary}</span>
         </a>
         <span id="secondary">{secondary}</span>
     </div>
@@ -26,7 +26,17 @@ const { image, link, primary, secondary, period } = Astro.props;
         margin-bottom: 0.5rem;
     }
 
-    a {
+    .primary {
+        color: var(--fg);
+        text-shadow: 0 0 0 transparent;
+        transition: text-shadow 0.25s ease;
+    }
+
+    #chapter:hover .primary {
+        text-shadow: 0.25px 0 var(--fg), -0.25px 0 var(--fg);
+    }
+
+    #chapter a {
         display: flex;
         gap: 0.5rem;
     }
