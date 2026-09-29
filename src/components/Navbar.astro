@@ -1,5 +1,6 @@
 ---
-import SettingsIcon from "../assets/icons/settings.svg";
+import SunIcon from "../assets/icons/sun.svg";
+import MoonIcon from "../assets/icons/moon.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
@@ -15,8 +16,9 @@ const currentPath = pathname.slice(1);
         <a href="/projects" class:list={{ active: currentPath === "projects" }}>Projects</a>
         <a href="/other" class:list={{ active: currentPath === "other" }}>Other</a>
 
-        <button class="flex">
-            <SettingsIcon stroke="var(--fg)" width="22" height="22" />
+        <button id="theme-toggle" class="flex">
+            <SunIcon class="theme-icon light-icon highlightable" width="22" height="22" />
+            <MoonIcon class="theme-icon dark-icon highlightable" width="22" height="22" />
         </button>
     </div>
 </nav>
@@ -45,4 +47,27 @@ const currentPath = pathname.slice(1);
     #links a:hover {
         color: var(--fg);
     }
+
+    .theme-icon {
+        display: none;
+    }
+
+    :global(html[data-theme="light"]) .dark-icon {
+        display: block;
+    }
+
+    :global(html[data-theme="dark"]) .light-icon {
+        display: block;
+    }
 </style>
+
+<script>
+    const button = document.querySelector("#theme-toggle");
+
+    button?.addEventListener("click", () => {
+        const html = document.documentElement;
+        const currentTheme = html.dataset.theme;
+        html.dataset.theme = currentTheme === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", html.dataset.theme);
+    });
+</script>
