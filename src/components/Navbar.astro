@@ -12,13 +12,31 @@ const currentPath = pathname.slice(1);
     </button>
 
     <div id="links">
-        <a href="/about" class:list={{ active: currentPath === "about" }}>About</a>
-        <a href="/projects" class:list={{ active: currentPath === "projects" }}>Projects</a>
-        <a href="/other" class:list={{ active: currentPath === "other" }}>Other</a>
+        <a
+            href="/about"
+            class="highlightable"
+            class:list={{ active: currentPath === "about" }}
+        >
+            About
+        </a>
+        <a
+            href="/projects"
+            class="highlightable"
+            class:list={{ active: currentPath === "projects" }}
+        >
+            Projects
+        </a>
+        <a
+            href="/more"
+            class="highlightable"
+            class:list={{ active: currentPath === "more" }}
+        >
+            More
+        </a>
 
-        <button id="theme-toggle" class="flex">
-            <SunIcon class="theme-icon light-icon highlightable" width="22" height="22" />
-            <MoonIcon class="theme-icon dark-icon highlightable" width="22" height="22" />
+        <button id="theme-toggle" class="flex highlightable">
+            <SunIcon id="light-icon" width="22" height="22" />
+            <MoonIcon id="dark-icon" width="22" height="22" />
         </button>
     </div>
 </nav>
@@ -48,30 +66,24 @@ const currentPath = pathname.slice(1);
         font-weight: bold;
     }
 
-    #links a:hover {
-        color: var(--fg);
-    }
-
-    .theme-icon {
+    :global(html[data-theme="light"]) #light-icon {
         display: none;
     }
 
-    :global(html[data-theme="light"]) .dark-icon {
-        display: block;
-    }
-
-    :global(html[data-theme="dark"]) .light-icon {
-        display: block;
+    :global(html[data-theme="dark"]) #dark-icon {
+        display: none;
     }
 </style>
 
 <script>
-    const button = document.querySelector("#theme-toggle");
+    document.addEventListener("astro:page-load", () => {
+        const button = document.querySelector("#theme-toggle");
 
-    button?.addEventListener("click", () => {
-        const html = document.documentElement;
-        const currentTheme = html.dataset.theme;
-        html.dataset.theme = currentTheme === "dark" ? "light" : "dark";
-        localStorage.setItem("theme", html.dataset.theme);
+        button?.addEventListener("click", () => {
+            const html = document.documentElement;
+            const currentTheme = html.dataset.theme;
+            html.dataset.theme = currentTheme === "dark" ? "light" : "dark";
+            localStorage.setItem("theme", html.dataset.theme);
+        });
     });
 </script>

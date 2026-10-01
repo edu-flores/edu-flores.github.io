@@ -29,6 +29,10 @@ body {
     color: var(--fg-muted);
 }
 
+p {
+    line-height: 22px;
+}
+
 b, strong {
     color: var(--fg);
     font-weight: bold;
