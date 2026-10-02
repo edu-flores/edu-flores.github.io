@@ -23,6 +23,10 @@
     padding: 0;
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     font-family: "Inter", sans-serif;
     background-color: var(--bg);
