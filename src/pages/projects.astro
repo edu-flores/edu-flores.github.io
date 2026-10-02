@@ -1,7 +1,43 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Project from "../components/Project.astro";
+import type { ComponentProps } from "astro/types";
+
+import TreackterImage from "../assets/imgs/treackter.png";
+import W4wImage from "../assets/imgs/w4w.png";
+
+type ProjectProps = ComponentProps<typeof Project>;
+
+const projects: ProjectProps[] = [
+    {
+        image: TreackterImage,
+        title: "Treackter DAW",
+        source: "https://github.com/edu-flores/treackter-daw",
+        external: "https://edu-flores.github.io/projects/treackter/build/index.html",
+        description:
+            "A digital audio workstation (DAW) <strong>for creating musical beats</strong>, " +
+            "with multiple instrumental tracks, simple audio mastering, and more. " +
+            "Made in college during winter break while I was learning music production.",
+        tags: ["React", "Tailwind", "TypeScript"],
+        date: "December 2022"
+    },
+    {
+        image: W4wImage,
+        title: "Widgets 4 Workouts",
+        source: "https://github.com/edu-flores/widgets-4-workouts",
+        external: "https://edu-flores.github.io/projects/w4w/dist/index.html",
+        description:
+            "A workout helper <strong>for logging your daily workouts</strong>. " +
+            "Includes tools like a timer, notes, goals, calculator, playlist, and others. " +
+            "Built to keep track of my home workouts and help me keep progressing.",
+        tags: ["Vue", "Sass", "Bootstrap"],
+        date: "January 2023"
+    }
+];
 ---
 
 <Layout>
-    Projects
+    {projects.map((project) => (
+        <Project {...project} />
+    ))}
 </Layout>

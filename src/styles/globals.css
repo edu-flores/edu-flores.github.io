@@ -4,7 +4,7 @@
     color-scheme: light dark;
     --bg: light-dark(#ebeef5, #050b12);
     --fg: light-dark(#050b12, #ebeef5);
-    --fg-muted: light-dark(#050b12b3, #ebeef5cc);
+    --fg-muted: light-dark(#050b1299, #ebeef5cc);
 }
 
 [data-theme="light"] {
@@ -66,13 +66,13 @@ a {
 
 @media (max-width: 576px) {
   .sm {
-    display: none;
+    display: none !important;
   }
 }
 
 @media (max-width: 768px) {
   .md {
-    display: none;
+    display: none !important;
   }
 }
 
