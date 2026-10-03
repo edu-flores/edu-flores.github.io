@@ -1,4 +1,11 @@
 ---
+import type { SvgComponent } from 'astro/types';
+
+interface Props {
+    icon: SvgComponent;
+    name: string;
+}
+
 const { icon: Icon, name } = Astro.props;
 ---
 
