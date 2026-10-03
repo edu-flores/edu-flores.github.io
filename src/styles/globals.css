@@ -15,6 +15,11 @@
     color-scheme: dark;
 }
 
+::selection {
+    background-color: var(--fg);
+    color: var(--bg);
+}
+
 /* General */
 
 * {
@@ -25,6 +30,7 @@
 
 html {
     scrollbar-gutter: stable;
+    scrollbar-color: var(--fg) transparent;
 }
 
 body {
