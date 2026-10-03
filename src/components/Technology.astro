@@ -9,13 +9,13 @@ interface Props {
 const { icon: Icon, name } = Astro.props;
 ---
 
-<div id="technology" class="elevate">
+<div class="technology elevate">
     <Icon stroke="var(--fg)" width="22" height="22" />
     <span>{name}</span>
 </div>
 
 <style>
-    #technology {
+    .technology {
         display: flex;
         align-items: center;
         gap: 3px;

@@ -17,32 +17,32 @@ interface Props {
 const { image, title, source, external, description, tags, date } = Astro.props;
 ---
 
-<article class="project">
-    <a href={external} target="_blank" class="project-image">
-        <Image src={image} alt={title} layout="fixed" width={image.width} height={image.height} />
+<article>
+    <a href={external} target="_blank" rel="noopener" class="project__image">
+        <Image src={image} alt="" layout="fixed" width={image.width} height={image.height} />
     </a>
 
-    <div class="project-content">
-        <header class="project-header">
+    <div class="project__content">
+        <header class="project__header">
             <h2 class="loud">{title}</h2>
 
-            <nav class="project-links">
-                <a href={source} target="_blank">
+            <div class="project__links">
+                <a href={source} target="_blank" rel="noopener">
                     <SourceIcon class="highlightable" width="24" height="24" />
                 </a>
-                <a href={external} target="_blank">
+                <a href={external} target="_blank" rel="noopener">
                     <ExternalIcon class="highlightable" width="24" height="24" />
                 </a>
-            </nav>
+            </div>
         </header>
     
         <p set:html={description}></p>
     
-        <footer class="project-meta">
-            <ul class="project-tags">
-                {tags.map((tag: string) => <li class="project-tag elevate">{tag}</li>)}
+        <footer class="project__meta">
+            <ul class="project__tags">
+                {tags.map((tag: string) => <li class="project__tag elevate">{tag}</li>)}
             </ul>
-            <time class="project-date sm" datetime={date}>
+            <time class="project__date sm">
                 {date}
             </time>
         </footer>
@@ -50,11 +50,7 @@ const { image, title, source, external, description, tags, date } = Astro.props;
 </article>
 
 <style>
-    .project {
-        margin-bottom: 2rem;
-    }
-
-    .project-image {
+    .project__image {
         display: block;
         aspect-ratio: 16 / 10;
         margin-bottom: 1rem;
@@ -62,53 +58,53 @@ const { image, title, source, external, description, tags, date } = Astro.props;
         overflow: hidden;
     }
 
-    .project-image img {
+    .project__image img {
         width: 100%;
         height: 100%;
         transition: transform 0.5s ease;
     }
 
-    .project-image:hover img {
+    .project__image:hover img {
         transform: scale(1.02);
     }
 
-    .project-content {
+    .project__content {
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
     }
 
-    .project-header {
+    .project__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .project-links {
+    .project__links {
         display: flex;
         gap: 0.5rem;
     }
 
-    .project-meta {
+    .project__meta {
         display: flex;
         justify-content: space-between;
     }
 
-    .project-tags {
+    .project__tags {
         list-style-type: none;
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
     }
 
-    .project-tag {
+    .project__tag {
         border: 1px solid var(--fg);
         padding: 5px 8px;
         border-radius: 5px;
         font-size: 13px;
     }
 
-    .project-date {
+    .project__date {
         display: flex;
         align-items: center;
         font-size: 14px;

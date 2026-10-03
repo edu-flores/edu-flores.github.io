@@ -12,54 +12,51 @@ interface Props {
 const { image, link, primary, secondary, period } = Astro.props;
 ---
 
-<div id="chapter">
+<article class="chapter">
     <div class="flex">
-        <a href={link} target="_blank">
-            <Image src={image} alt="Logo" width="20" height="20" />
-            <span class="primary">{primary}</span>
+        <a href={link} target="_blank" rel="noopener noreferrer">
+            <Image src={image} alt="" width="20" height="20" />
+            <span class="chapter__primary">{primary}</span>
         </a>
-        <span id="secondary">{secondary}</span>
+
+        <span class="chapter__secondary">{secondary}</span>
     </div>
 
-    <span id="period" class="sm">{period}</span>
-</div>
+    <span class="chapter__period sm">{period}</span>
+</article>
 
 <style>
-    #chapter {
+    .chapter {
         display: flex;
         justify-content: space-between;
     }
 
-    #chapter:not(:last-child) {
-        margin-bottom: 0.5rem;
-    }
-
-    .primary {
+    .chapter__primary {
         color: var(--fg);
         text-shadow: 0 0 0 transparent;
         transition: text-shadow 0.25s ease;
     }
 
-    #chapter:hover .primary {
+    .chapter:hover .chapter__primary {
         text-shadow: 0.25px 0 var(--fg), -0.25px 0 var(--fg);
     }
 
-    #chapter a {
+    .chapter a {
         display: flex;
         gap: 0.5rem;
     }
 
-    #secondary {
+    .chapter__secondary {
         padding-left: 1.25rem;
         text-indent: -1.25rem;
     }
 
-    #secondary::before {
+    .chapter__secondary::before {
         content: "|";
         margin-inline: 0.5rem;
     }
 
-    #period {
+    .chapter__period {
         font-size: 14px;
     }
 </style>
