@@ -1,5 +1,4 @@
 ---
-
 interface Props {
     title: string;
 }
@@ -8,23 +7,15 @@ const { title } = Astro.props;
 ---
 
 <section>
-    <h2>{title}</h2>
+    <h2 class="section__heading">{title}</h2>
 
-    <div id={title.toLowerCase().replaceAll(" ", "-")}>
-        <slot />
-    </div>
+    <slot />
 </section>
 
 <style>
-    h2 {
+    .section__heading {
         font-size: 18px;
         font-weight: normal;
         margin-bottom: 1rem;
-    }
-
-    #technologies {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 1rem;
     }
 </style>

@@ -75,12 +75,19 @@ const technologies: TechnologyProps[]  = [
 ---
 
 <Layout>
-    <div id="about">
-        <div>
-            <h1 id="title" class="loud">Eduardo Flores</h1>
-            <div id="subtitle" class="loud">
+    <div class="about">
+        <header>
+            <h1 class="about__title loud">Eduardo Flores</h1>
+
+            <div class="about__subtitle loud">
                 <span>Software Engineer II</span>
-                <a href="https://maps.app.goo.gl/SCTv6cgUrtDaRkgt9" target="_blank" id="location" class="elevate">
+
+                <a
+                    href="https://maps.app.goo.gl/SCTv6cgUrtDaRkgt9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="about__location elevate"
+                >
                     <LocationIcon width="22" height="22" />
                     <span>Mty, Mexico</span>
                 </a>
@@ -91,41 +98,47 @@ const technologies: TechnologyProps[]  = [
                 very intrigued by how the field has been changing lately. Outside of work I enjoy playing
                 tennis, learning guitar, and reading books.
             </p>
-        </div>
+        </header>
 
         <Section title="Experience">
-            {experience.map((exp) => (
-                <Chapter {...exp} />
-            ))}
+            <ol reversed class="about__list about__list--experience">
+                {experience.map((exp) => (
+                    <li><Chapter {...exp} /></li>
+                ))}
+            </ol>
         </Section>
 
         <Section title="Education">
-            {education.map((edu) => (
-                <Chapter {...edu} />
-            ))}
+            <ol reversed class="about__list about__list--education">
+                {education.map((edu) => (
+                    <li><Chapter {...edu} /></li>
+                ))}
+            </ol>
         </Section>
 
         <Section title="Technologies">
-            {technologies.map((tech) => (
-                <Technology {...tech} />
-            ))}
+            <ul class="about__list about__list--technologies">
+                {technologies.map((tech) => (
+                    <li><Technology {...tech} /></li>
+                ))}
+            </ul>
         </Section>
     </div>
 </Layout>
 
 <style>
-    #about {
+    .about {
         display: flex;
         flex-direction: column;
         gap: 2.5rem;
     }
 
-    #title {
+    .about__title {
         font-size: 24px;
         margin-bottom: 0.5rem;
     }
 
-    #subtitle {
+    .about__subtitle {
         font-size: 18px;
         display: flex;
         align-items: center;
@@ -134,9 +147,26 @@ const technologies: TechnologyProps[]  = [
         margin-bottom: 1rem;
     }
 
-    #location {
+    .about__location {
         display: flex;
         align-items: center;
         gap: 3px;
+    }
+
+    .about__list {
+        list-style-type: none;
+    }
+
+    .about__list--experience,
+    .about__list--education {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .about__list--technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
     }
 </style>

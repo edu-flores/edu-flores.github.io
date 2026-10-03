@@ -7,77 +7,77 @@ const currentPath = pathname.slice(1);
 ---
 
 <nav>
-    <button id="logo">
+    <button id="highlight-wave" class="navbar__logo">
         <span><b>E</b>F</span>
     </button>
 
-    <div id="links">
+    <div class="navbar__links">
         <a
             href="/about"
             class="highlightable"
-            class:list={{ active: currentPath === "about" }}
+            class:list={{ "navbar__link--active": currentPath === "about" }}
         >
             About
         </a>
         <a
             href="/projects"
             class="highlightable"
-            class:list={{ active: currentPath === "projects" }}
+            class:list={{ "navbar__link--active": currentPath === "projects" }}
         >
             Projects
         </a>
         <a
             href="/more"
             class="highlightable"
-            class:list={{ active: currentPath === "more" }}
+            class:list={{ "navbar__link--active": currentPath === "more" }}
         >
             More
         </a>
 
-        <button id="theme-toggle" class="flex highlightable">
-            <SunIcon id="light-icon" width="24" height="24" />
-            <MoonIcon id="dark-icon" width="24" height="24" />
+        <button class="navbar__theme-toggle flex highlightable">
+            <SunIcon class="navbar__light-icon" width="24" height="24" />
+            <MoonIcon class="navbar__dark-icon" width="24" height="24" />
         </button>
     </div>
 </nav>
 
 <style>
-    #logo {
-        font-size: 18px;
-    }
-
     nav {
         display: flex;
         justify-content: space-between;
     }
 
-    #links {
+    .navbar__logo {
+        font-size: 18px;
+    }
+
+    .navbar__links {
         display: flex;
         align-items: center;
         gap: 1.5rem;
     }
 
-    #links a {
+    .navbar__links a {
         transition: color 0.25s ease;
     }
 
-    #links a.active {
+    .navbar__links a.navbar__link--active {
         color: var(--fg);
         font-weight: bold;
     }
 
-    :global(html[data-theme="light"]) #light-icon {
+    :global(html[data-theme="light"]) .navbar__light-icon {
         display: none;
     }
 
-    :global(html[data-theme="dark"]) #dark-icon {
+    :global(html[data-theme="dark"]) .navbar__dark-icon {
         display: none;
     }
 </style>
 
 <script>
     document.addEventListener("astro:page-load", () => {
-        const button = document.querySelector("#theme-toggle");
+        const button = document.querySelector(".navbar__theme-toggle");
 
         button?.addEventListener("click", () => {
             const html = document.documentElement;
