@@ -2,6 +2,7 @@
 import Section from "./Section.astro";
 import Chapter from "./Chapter.astro";
 import Technology from "./Technology.astro";
+import type { ComponentProps } from "astro/types";
 
 import EtsyImage from "../assets/imgs/etsy.png";
 import ReverbImage from "../assets/imgs/reverb.png";
@@ -22,7 +23,9 @@ import CloudIcon from "../assets/icons/cloud.svg";
 const dob = new Date("2001-07-04");
 const age = new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970;
 
-const experience = [
+type ChapterProps = ComponentProps<typeof Chapter>;
+
+const experience: ChapterProps[] = [
   {
     image: EtsyImage,
     link: "https://www.etsy.com",
@@ -46,7 +49,7 @@ const experience = [
   },
 ];
 
-const education = [
+const education: ChapterProps[] = [
   {
     image: UdemImage,
     link: "https://www.udem.edu.mx",
@@ -56,7 +59,9 @@ const education = [
   },
 ];
 
-const technologies = [
+type TechnologyProps = ComponentProps<typeof Technology>;
+
+const technologies: TechnologyProps[]  = [
     { icon: PythonIcon, name: "Python" },
     { icon: TypeScriptIcon, name: "TypeScript" },
     { icon: BashIcon, name: "Bash" },
