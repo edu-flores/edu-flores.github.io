@@ -7,7 +7,7 @@ const currentPath = pathname.slice(1);
 ---
 
 <nav>
-    <button id="highlight-wave" class="navbar__logo">
+    <button id="highlight-wave" class="navbar__logo" aria-label="Highlight wave">
         <span><b>E</b>F</span>
     </button>
 
@@ -34,7 +34,7 @@ const currentPath = pathname.slice(1);
             More
         </a>
 
-        <button class="navbar__theme-toggle flex highlightable">
+        <button class="navbar__theme-toggle flex highlightable" aria-label="Toggle theme">
             <SunIcon class="navbar__light-icon" width="24" height="24" />
             <MoonIcon class="navbar__dark-icon" width="24" height="24" />
         </button>
