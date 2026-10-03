@@ -1,8 +1,142 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Me from "../components/Me.astro";
+import Section from "../components/Section.astro";
+import Chapter from "../components/Chapter.astro";
+import Technology from "../components/Technology.astro";
+import type { ComponentProps } from "astro/types";
+
+import EtsyImage from "../assets/imgs/etsy.png";
+import ReverbImage from "../assets/imgs/reverb.png";
+import KatconImage from "../assets/imgs/katcon.png";
+import UdemImage from "../assets/imgs/udem.png";
+
+// https://hugeicons.com
+import LocationIcon from "../assets/icons/location.svg";
+import PythonIcon from "../assets/icons/python.svg";
+import TypeScriptIcon from "../assets/icons/typescript.svg";
+import BashIcon from "../assets/icons/bash.svg";
+import PackageIcon from "../assets/icons/package.svg";
+import ReactIcon from "../assets/icons/react.svg";
+import TailwindIcon from "../assets/icons/tailwind.svg";
+import DatabaseIcon from "../assets/icons/database.svg";
+import CloudIcon from "../assets/icons/cloud.svg";
+
+const dob = new Date("2001-07-04");
+const age = new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970;
+
+type ChapterProps = ComponentProps<typeof Chapter>;
+
+const experience: ChapterProps[] = [
+  {
+    image: EtsyImage,
+    link: "https://www.etsy.com",
+    primary: "Etsy",
+    secondary: "Infrastructure",
+    period: "Dec '25 – Present",
+  },
+  {
+    image: ReverbImage,
+    link: "https://reverb.com",
+    primary: "Reverb",
+    secondary: "Revenue",
+    period: "May '25 – Dec '25",
+  },
+  {
+    image: KatconImage,
+    link: "https://katcon.com",
+    primary: "Katcon",
+    secondary: "Digitalization",
+    period: "Oct '23 – Mar '25",
+  },
+];
+
+const education: ChapterProps[] = [
+  {
+    image: UdemImage,
+    link: "https://www.udem.edu.mx",
+    primary: "UDEM",
+    secondary: "B.S. in Computer Science",
+    period: "Aug '20 – Dec '24",
+  },
+];
+
+type TechnologyProps = ComponentProps<typeof Technology>;
+
+const technologies: TechnologyProps[]  = [
+    { icon: PythonIcon, name: "Python" },
+    { icon: TypeScriptIcon, name: "TypeScript" },
+    { icon: BashIcon, name: "Bash" },
+    { icon: PackageIcon, name: "Go" },
+    { icon: ReactIcon, name: "React" },
+    { icon: TailwindIcon, name: "Tailwind" },
+    { icon: DatabaseIcon, name: "PostgreSQL" },
+    { icon: CloudIcon, name: "AWS/GCP" },
+];
 ---
 
 <Layout>
-    <Me />
+    <div id="about">
+        <div>
+            <h1 id="title" class="loud">Eduardo Flores</h1>
+            <div id="subtitle" class="loud">
+                <span>Software Engineer II</span>
+                <a href="https://maps.app.goo.gl/SCTv6cgUrtDaRkgt9" target="_blank" id="location" class="elevate">
+                    <LocationIcon width="22" height="22" />
+                    <span>Mty, Mexico</span>
+                </a>
+            </div>
+
+            <p>
+                The internet quickly won my heart as a kid. Now at {age} I <strong>work in tech</strong>,
+                very intrigued by how the field has been changing lately. Outside of work I enjoy playing
+                tennis, learning guitar, and reading books.
+            </p>
+        </div>
+
+        <Section title="Experience">
+            {experience.map((exp) => (
+                <Chapter {...exp} />
+            ))}
+        </Section>
+
+        <Section title="Education">
+            {education.map((edu) => (
+                <Chapter {...edu} />
+            ))}
+        </Section>
+
+        <Section title="Technologies">
+            {technologies.map((tech) => (
+                <Technology {...tech} />
+            ))}
+        </Section>
+    </div>
 </Layout>
+
+<style>
+    #about {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    #title {
+        font-size: x-large;
+        margin-bottom: 0.5rem;
+    }
+
+    #subtitle {
+        font-size: large;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    #location {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+</style>
