@@ -3,11 +3,20 @@ import "@fontsource/inter";
 import "../styles/globals.css";
 import Background from "../components/Background.astro";
 import Container from "../components/Container.astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Eduardo Flores</title>
+
+        <ClientRouter />
         <script is:inline>
             function applyTheme() {
                 const savedTheme = localStorage.getItem("theme");
@@ -21,12 +30,6 @@ import Container from "../components/Container.astro";
             applyTheme();
             document.addEventListener("astro:page-load", applyTheme);
         </script>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Eduardo Flores</title>
     </head>
     <body>
         <Background />

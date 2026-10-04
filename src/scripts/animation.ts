@@ -1,0 +1,178 @@
+/**
+ *
+ * Starts a background animation on a canvas element.
+ *
+ * The animation is based on Conway's Game of Life, with a few modifications
+ * to make it work well as a dynamic background. The basic rules of the game are:
+ *
+ *   - Live cells with < 2 live neighbors die (underpopulation)
+ *   - Live cells with > 3 live neighbors die (overpopulation)
+ *   - Dead cells with exactly 3 live neighbors become alive (reproduction)
+ *   - Live cells with 2 or 3 live neighbors survive to the next generation
+ *
+ * The following modifications were made:
+ *
+ *   - Random clusters of cells appear every X seconds
+ *   - TODO: Cells have a small chance of randomly dying
+ *   - TODO: Users can move or click their mouse to create small disturbances
+ *
+ * TODO: Cells are also not simply "alive" or "dead". Instead, they have an energy level
+ * that gradually increases or decreases, allowing cells to slowly fade out as they die.
+ *
+ */
+
+const canvas = document.getElementById("game-of-life") as HTMLCanvasElement;
+const context = canvas.getContext("2d");
+
+let cols = 0, rows = 0;
+let currGrid: Uint8Array, nextGrid: Uint8Array;
+
+const UPDATE_INTERVAL_MS = 500;
+const CELL_SIZE = 6;
+const CELL_GAP = 2;
+
+const MIN_SPAWN_DELAY_MS = 500;
+const MAX_SPAWN_DELAY_MS = 2000;
+const MIN_CLUSTER_RADIUS = 1;
+const MAX_CLUSTER_RADIUS = 5;
+const CLUSTER_CELL_CHANCE = 0.75;
+
+// Returns the array index for a given grid position
+const getIndex = (x: number, y: number) => y * cols + x;
+
+// Advances the simulation and redraws the canvas
+const update = () => { step(); draw(); };
+
+// Creates a new grid based on the current window size
+function createWorld() {
+    cols = Math.ceil(window.innerWidth / CELL_SIZE);
+    rows = Math.ceil(window.innerHeight / CELL_SIZE);
+
+    currGrid = new Uint8Array(cols * rows);
+    nextGrid = new Uint8Array(cols * rows);
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+// Spawns a random cluster of cells at the given position
+function spawnCluster(x: number, y: number, radius: number) {
+    for (let offsetX = -radius; offsetX <= radius; offsetX++) {
+        for (let offsetY = -radius; offsetY <= radius; offsetY++) {
+
+            // Randomly skip cells to not spawn perfect shapes
+            if (Math.random() > CLUSTER_CELL_CHANCE) continue;
+
+            const cellX = x + offsetX;
+            const cellY = y + offsetY;
+
+            // Skip cells outside the grid
+            if (
+                cellX >= 0 && cellX < cols &&
+                cellY >= 0 && cellY < rows
+            ) {
+                currGrid[getIndex(cellX, cellY)] = 1;
+            }
+        }
+    }
+}
+
+// Counts the living cells surrounding a given position (Moore)
+function countNeighbors(x: number, y: number) {
+    let count = 0;
+
+    for (let dx = -1; dx <= 1; dx++) {
+        for (let dy = -1; dy <= 1; dy++) {
+
+            // Skip the current cell
+            if (dx === 0 && dy === 0) continue;
+
+            let nx = x + dx;
+            let ny = y + dy;
+
+            // Skip cells outside the grid
+            if (nx < 0 || nx >= cols || ny < 0 || ny >= rows) continue;
+
+            count += currGrid[getIndex(nx, ny)];
+        }
+    }
+
+    return count;
+}
+
+// Calculates the next generation using the Game of Life rules
+function step() {
+    nextGrid.fill(0);
+
+    for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+
+            const idx = getIndex(x, y);
+            const isAlive = currGrid[idx];
+            const neighbors = countNeighbors(x, y);
+
+            // Determine the next state of the current cell
+            if (isAlive) {
+                const isUnderpopulated = neighbors < 2;
+                const isOverpopulated = neighbors > 3;
+                nextGrid[idx] = isUnderpopulated || isOverpopulated ? 0 : 1;
+            } else {
+                const canReproduce = neighbors === 3;
+                nextGrid[idx] = canReproduce ? 1 : 0;
+            }
+        }
+    }
+
+    [currGrid, nextGrid] = [nextGrid, currGrid];
+}
+
+// Draws all living cells onto the canvas
+function draw() {
+    if (!context) return;
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    const style = getComputedStyle(canvas);
+    context.fillStyle = style.color;
+
+    // Render all living cells
+    for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+
+            const idx = getIndex(x, y);
+            if (!currGrid[idx]) continue;
+
+            const cellX = x * CELL_SIZE;
+            const cellY = y * CELL_SIZE;
+
+            context.fillRect(
+                cellX + CELL_GAP / 2,
+                cellY + CELL_GAP / 2,
+                CELL_SIZE - CELL_GAP,
+                CELL_SIZE - CELL_GAP
+            );
+        }
+    }
+}
+
+// Repeatedly spawns random cell clusters at random intervals
+function scheduleSpawns() {
+    const spawnDelay =
+        MIN_SPAWN_DELAY_MS +
+        Math.random() * (MAX_SPAWN_DELAY_MS - MIN_SPAWN_DELAY_MS);
+
+    setTimeout(() => {
+        const spawnX = Math.floor(Math.random() * cols);
+        const spawnY = Math.floor(Math.random() * rows);
+        const radius = Math.floor(Math.random() * MAX_CLUSTER_RADIUS) + MIN_CLUSTER_RADIUS;
+
+        spawnCluster(spawnX, spawnY, radius);
+        scheduleSpawns();
+    }, spawnDelay);
+}
+
+createWorld();
+scheduleSpawns();
+
+setInterval(update, UPDATE_INTERVAL_MS);
+window.addEventListener("resize", createWorld);

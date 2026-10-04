@@ -1,10 +1,13 @@
-<canvas id="background" class="md"></canvas>
+<canvas id="game-of-life" class="background md" transition:persist></canvas>
 
 <style>
-    #background {
+    .background {
         width: 100vw;
         height: 100vh;
         position: fixed;
         inset: 0;
+        color: var(--fg);
     }
 </style>
+
+<script src="../scripts/animation.ts"></script>
