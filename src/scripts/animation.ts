@@ -68,8 +68,19 @@ function createWorld() {
     currGrid = new Uint8Array(cols * rows);
     nextGrid = new Uint8Array(cols * rows);
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // The code below fixes blurriness by correcting the canvas resolution
+    // https://developer.mozilla.org/docs/Web/API/Window/devicePixelRatio
+
+    const scale = window.devicePixelRatio || 1;
+
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+
+    canvas.width = Math.floor(window.innerWidth * scale);
+    canvas.height = Math.floor(window.innerHeight * scale);
+    context.scale(scale, scale);
+
+    // ---
 
     syncCanvasColor();
 }
