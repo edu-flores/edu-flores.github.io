@@ -25,8 +25,8 @@ const canvas = document.getElementById("game-of-life") as HTMLCanvasElement;
 const context = canvas.getContext("2d")!;
 
 let cols = 0, rows = 0;
-let currGrid: Uint8Array, nextGrid: Uint8Array, glowGrid: Float16Array;
-let baseColor: string;
+let currGrid: Uint8Array, nextGrid: Uint8Array, glowGrid: Float32Array;
+let colorTable: string[];
 
 const UPDATE_INTERVAL_MS = 70;
 const CELL_SIZE = 6;
@@ -38,13 +38,13 @@ const MIN_CLUSTER_RADIUS = 2;
 const MAX_CLUSTER_RADIUS = 5;
 const CLUSTER_CELL_CHANCE = 0.30;
 const RANDOM_DEATH_CHANCE = 0.08;
-const POINTER_SENSITIVITY = 0.30;
+const POINTER_SENSITIVITY = 0.06;
 const GLOW_DECAY_RATE = 0.85;
 const GLOW_THRESHOLD = 0.05;
 
 // Change the canvas fillStyle on theme toggles
 const themeObserver = new MutationObserver(() => {
-    baseColor = getComputedStyle(canvas).color;
+    setBaseColor(getComputedStyle(canvas).color);
     draw();
 });
 
@@ -59,6 +59,16 @@ const getIndex = (x: number, y: number) => y * cols + x;
 // Advances the simulation and redraws the canvas
 const update = () => { step(); draw(); };
 
+// Pre-computes all 256 possible opacities based on the base color
+function setBaseColor(baseColor: string) {
+    const prefix = baseColor.slice(0, -1);
+
+    colorTable = Array.from(
+        { length: 256 },
+        (_, i) => `${prefix}, ${i / 255})`
+    );
+}
+
 // Creates a new grid based on the current window size
 function createWorld() {
     cols = Math.ceil(window.innerWidth / CELL_SIZE);
@@ -66,7 +76,7 @@ function createWorld() {
 
     currGrid = new Uint8Array(cols * rows);
     nextGrid = new Uint8Array(cols * rows);
-    glowGrid = new Float16Array(cols * rows);
+    glowGrid = new Float32Array(cols * rows);
 
     // The code below fixes blurriness by correcting the canvas resolution
     // https://developer.mozilla.org/docs/Web/API/Window/devicePixelRatio
@@ -78,11 +88,12 @@ function createWorld() {
 
     canvas.width = Math.floor(window.innerWidth * scale);
     canvas.height = Math.floor(window.innerHeight * scale);
-    context.scale(scale, scale);
+
+    context.setTransform(scale, 0, 0, scale, 0, 0);
 
     // ---
 
-    baseColor = getComputedStyle(canvas).color;
+    setBaseColor(getComputedStyle(canvas).color);
 }
 
 // Spawns a random cluster of cells at the given position
@@ -188,7 +199,7 @@ function draw() {
             //   4 . █ █ █ █ .
             //   5 . . . . . .
 
-            context.fillStyle = `${baseColor.slice(0, -1)} , ${glow})`;
+            context.fillStyle = colorTable[Math.floor(glow * 255)];
             context.fillRect(
                 cellX + CELL_GAP / 2,
                 cellY + CELL_GAP / 2,
