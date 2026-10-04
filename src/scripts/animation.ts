@@ -13,7 +13,7 @@
  * The following modifications were made:
  *
  *   - Random clusters of cells appear every X seconds
- *   - TODO: Cells have a small chance of randomly dying
+ *   - Cells have a small chance of randomly dying (entropy!)
  *   - TODO: Users can move or click their mouse to create small disturbances
  *
  * TODO: Cells are also not simply "alive" or "dead". Instead, they have an energy level
@@ -36,6 +36,7 @@ const MAX_SPAWN_DELAY_MS = 2000;
 const MIN_CLUSTER_RADIUS = 1;
 const MAX_CLUSTER_RADIUS = 5;
 const CLUSTER_CELL_CHANCE = 0.75;
+const RANDOM_DEATH_CHANCE = 0.08;
 
 // Change the canvas fillStyle on theme toggles
 const themeObserver = new MutationObserver(() => {
@@ -145,7 +146,8 @@ function step() {
             if (isAlive) {
                 const isUnderpopulated = neighbors < 2;
                 const isOverpopulated = neighbors > 3;
-                nextGrid[idx] = isUnderpopulated || isOverpopulated ? 0 : 1;
+                const isLucky = Math.random() > RANDOM_DEATH_CHANCE;
+                nextGrid[idx] = isUnderpopulated || isOverpopulated || !isLucky ? 0 : 1;
             } else {
                 const canReproduce = neighbors === 3;
                 nextGrid[idx] = canReproduce ? 1 : 0;
@@ -169,6 +171,18 @@ function draw() {
 
             const cellX = x * CELL_SIZE;
             const cellY = y * CELL_SIZE;
+
+            // Example with CELL_SIZE = 6 and CELL_GAP = 2:
+            // The current cell (cellX, cellY) is at the top-left corner (X)
+            // The 2px gap leaves 1px on each side, and the filled area is 4x4
+            //
+            //     0 1 2 3 4 5
+            //   0 X . . . . .
+            //   1 . █ █ █ █ .
+            //   2 . █ █ █ █ .
+            //   3 . █ █ █ █ .
+            //   4 . █ █ █ █ .
+            //   5 . . . . . .
 
             context.fillRect(
                 cellX + CELL_GAP / 2,
