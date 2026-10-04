@@ -22,7 +22,7 @@
  */
 
 const canvas = document.getElementById("game-of-life") as HTMLCanvasElement;
-const context = canvas.getContext("2d");
+const context = canvas.getContext("2d")!;
 
 let cols = 0, rows = 0;
 let currGrid: Uint8Array, nextGrid: Uint8Array;
@@ -37,11 +37,28 @@ const MIN_CLUSTER_RADIUS = 1;
 const MAX_CLUSTER_RADIUS = 5;
 const CLUSTER_CELL_CHANCE = 0.75;
 
+// Change the canvas fillStyle on theme toggles
+const themeObserver = new MutationObserver(() => {
+    syncCanvasColor();
+    draw();
+});
+
+themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+});
+
 // Returns the array index for a given grid position
 const getIndex = (x: number, y: number) => y * cols + x;
 
 // Advances the simulation and redraws the canvas
 const update = () => { step(); draw(); };
+
+// Applies the current theme color
+function syncCanvasColor() {
+    const style = getComputedStyle(canvas);
+    context.fillStyle = style.color;
+}
 
 // Creates a new grid based on the current window size
 function createWorld() {
@@ -53,6 +70,8 @@ function createWorld() {
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    syncCanvasColor();
 }
 
 // Spawns a random cluster of cells at the given position
@@ -128,12 +147,7 @@ function step() {
 
 // Draws all living cells onto the canvas
 function draw() {
-    if (!context) return;
-
     context.clearRect(0, 0, canvas.width, canvas.height);
-
-    const style = getComputedStyle(canvas);
-    context.fillStyle = style.color;
 
     // Render all living cells
     for (let x = 0; x < cols; x++) {
