@@ -126,21 +126,29 @@ function spawnCluster(x: number, y: number, radius: number) {
 function countNeighbors(x: number, y: number) {
     let count = 0;
 
-    for (let dx = -1; dx <= 1; dx++) {
-        for (let dy = -1; dy <= 1; dy++) {
+    const hasLeft = x > 0;
+    const hasRight = x < cols - 1;
+    const hasTop = y > 0;
+    const hasBottom = y < rows - 1;
 
-            // Skip the current cell
-            if (dx === 0 && dy === 0) continue;
+    const idx = getIndex(x, y);
 
-            let nx = x + dx;
-            let ny = y + dy;
+    // Directly check all 8 surrounding positions (Moore)
 
-            // Skip cells outside the grid
-            if (nx < 0 || nx >= cols || ny < 0 || ny >= rows) continue;
-
-            count += currGrid[getIndex(nx, ny)];
-        }
+    if (hasTop) {
+        count += currGrid[idx - cols];
+        if (hasLeft)  count += currGrid[idx - cols - 1];
+        if (hasRight) count += currGrid[idx - cols + 1];
     }
+
+    if (hasBottom) {
+        count += currGrid[idx + cols];
+        if (hasLeft)  count += currGrid[idx + cols - 1];
+        if (hasRight) count += currGrid[idx + cols + 1];
+    }
+
+    if (hasLeft)  count += currGrid[idx - 1];
+    if (hasRight) count += currGrid[idx + 1];
 
     return count;
 }
