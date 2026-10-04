@@ -16,7 +16,7 @@
  *   - Cells have a small chance of randomly dying (entropy!)
  *   - Users can move or click their mouse to create small disturbances
  *
- * TODO: Cells are also not simply "alive" or "dead". Instead, they have an energy level
+ * Cells are also not simply "alive" or "dead". Instead, they have an energy level
  * that gradually increases or decreases, allowing cells to slowly fade out as they die.
  *
  */
@@ -25,23 +25,26 @@ const canvas = document.getElementById("game-of-life") as HTMLCanvasElement;
 const context = canvas.getContext("2d")!;
 
 let cols = 0, rows = 0;
-let currGrid: Uint8Array, nextGrid: Uint8Array;
+let currGrid: Uint8Array, nextGrid: Uint8Array, glowGrid: Float16Array;
+let baseColor: string;
 
-const UPDATE_INTERVAL_MS = 500;
+const UPDATE_INTERVAL_MS = 70;
 const CELL_SIZE = 6;
-const CELL_GAP = 2;
+const CELL_GAP = 0;
 
 const MIN_SPAWN_DELAY_MS = 500;
 const MAX_SPAWN_DELAY_MS = 2000;
-const MIN_CLUSTER_RADIUS = 1;
+const MIN_CLUSTER_RADIUS = 2;
 const MAX_CLUSTER_RADIUS = 5;
-const CLUSTER_CELL_CHANCE = 0.75;
+const CLUSTER_CELL_CHANCE = 0.30;
 const RANDOM_DEATH_CHANCE = 0.08;
-const POINTER_SENSITIVITY = 0.15;
+const POINTER_SENSITIVITY = 0.30;
+const GLOW_DECAY_RATE = 0.85;
+const GLOW_THRESHOLD = 0.05;
 
 // Change the canvas fillStyle on theme toggles
 const themeObserver = new MutationObserver(() => {
-    syncCanvasColor();
+    baseColor = getComputedStyle(canvas).color;
     draw();
 });
 
@@ -56,12 +59,6 @@ const getIndex = (x: number, y: number) => y * cols + x;
 // Advances the simulation and redraws the canvas
 const update = () => { step(); draw(); };
 
-// Applies the current theme color
-function syncCanvasColor() {
-    const style = getComputedStyle(canvas);
-    context.fillStyle = style.color;
-}
-
 // Creates a new grid based on the current window size
 function createWorld() {
     cols = Math.ceil(window.innerWidth / CELL_SIZE);
@@ -69,6 +66,7 @@ function createWorld() {
 
     currGrid = new Uint8Array(cols * rows);
     nextGrid = new Uint8Array(cols * rows);
+    glowGrid = new Float16Array(cols * rows);
 
     // The code below fixes blurriness by correcting the canvas resolution
     // https://developer.mozilla.org/docs/Web/API/Window/devicePixelRatio
@@ -84,7 +82,7 @@ function createWorld() {
 
     // ---
 
-    syncCanvasColor();
+    baseColor = getComputedStyle(canvas).color;
 }
 
 // Spawns a random cluster of cells at the given position
@@ -104,6 +102,7 @@ function spawnCluster(x: number, y: number, radius: number) {
                 cellY >= 0 && cellY < rows
             ) {
                 currGrid[getIndex(cellX, cellY)] = 1;
+                glowGrid[getIndex(cellX, cellY)] = 1;
             }
         }
     }
@@ -149,9 +148,11 @@ function step() {
                 const isOverpopulated = neighbors > 3;
                 const isLucky = Math.random() > RANDOM_DEATH_CHANCE;
                 nextGrid[idx] = isUnderpopulated || isOverpopulated || !isLucky ? 0 : 1;
+                glowGrid[idx] = 1;
             } else {
                 const canReproduce = neighbors === 3;
                 nextGrid[idx] = canReproduce ? 1 : 0;
+                glowGrid[idx] *= GLOW_DECAY_RATE;
             }
         }
     }
@@ -159,16 +160,18 @@ function step() {
     [currGrid, nextGrid] = [nextGrid, currGrid];
 }
 
-// Draws all living cells onto the canvas
+// Draws all living (+ fading-out) cells onto the canvas
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Render all living cells
+    // Render cells with their corresponding glow
     for (let x = 0; x < cols; x++) {
         for (let y = 0; y < rows; y++) {
 
             const idx = getIndex(x, y);
-            if (!currGrid[idx]) continue;
+            const glow = glowGrid[idx];
+
+            if (glow < GLOW_THRESHOLD) continue;
 
             const cellX = x * CELL_SIZE;
             const cellY = y * CELL_SIZE;
@@ -185,6 +188,7 @@ function draw() {
             //   4 . █ █ █ █ .
             //   5 . . . . . .
 
+            context.fillStyle = `${baseColor.slice(0, -1)} , ${glow})`;
             context.fillRect(
                 cellX + CELL_GAP / 2,
                 cellY + CELL_GAP / 2,
