@@ -27,20 +27,21 @@ const context = canvas.getContext("2d")!;
 let cols = 0, rows = 0;
 let currGrid: Uint8Array, nextGrid: Uint8Array, glowGrid: Float32Array;
 let colorTable: string[];
+let lastPointerSpawn = 0;
 
 const UPDATE_INTERVAL_MS = 70;
-const CELL_SIZE = 6;
+const CELL_SIZE = 8;
 const CELL_GAP = 2;
 
 const MIN_SPAWN_DELAY_MS = 500;
 const MAX_SPAWN_DELAY_MS = 2000;
 const MIN_CLUSTER_RADIUS = 2;
-const MAX_CLUSTER_RADIUS = 5;
+const MAX_CLUSTER_RADIUS = 6;
 const CLUSTER_CELL_CHANCE = 0.30;
 const RANDOM_DEATH_CHANCE = 0.08;
-const POINTER_SENSITIVITY = 0.20;
 const GLOW_DECAY_RATE = 0.85;
 const GLOW_THRESHOLD = 0.05;
+const POINTER_SPAWN_COOLDOWN_MS = 50;
 
 // Change the canvas fillStyle on theme toggles
 const themeObserver = new MutationObserver(() => {
@@ -242,5 +243,10 @@ setInterval(update, UPDATE_INTERVAL_MS);
 window.addEventListener("resize", createWorld);
 window.addEventListener("pointerdown", spawnAtPointer);
 window.addEventListener("pointermove", (e) => {
-    if (Math.random() < POINTER_SENSITIVITY) spawnAtPointer(e);
+    const now = performance.now();
+
+    if (now - lastPointerSpawn >= POINTER_SPAWN_COOLDOWN_MS) {
+        lastPointerSpawn = now;
+        spawnAtPointer(e);
+    }
 });
