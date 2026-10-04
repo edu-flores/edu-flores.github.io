@@ -14,7 +14,7 @@
  *
  *   - Random clusters of cells appear every X seconds
  *   - Cells have a small chance of randomly dying (entropy!)
- *   - TODO: Users can move or click their mouse to create small disturbances
+ *   - Users can move or click their mouse to create small disturbances
  *
  * TODO: Cells are also not simply "alive" or "dead". Instead, they have an energy level
  * that gradually increases or decreases, allowing cells to slowly fade out as they die.
@@ -37,6 +37,7 @@ const MIN_CLUSTER_RADIUS = 1;
 const MAX_CLUSTER_RADIUS = 5;
 const CLUSTER_CELL_CHANCE = 0.75;
 const RANDOM_DEATH_CHANCE = 0.08;
+const POINTER_SENSITIVITY = 0.15;
 
 // Change the canvas fillStyle on theme toggles
 const themeObserver = new MutationObserver(() => {
@@ -210,8 +211,21 @@ function scheduleSpawns() {
     }, spawnDelay);
 }
 
+// Spawn clusters at the pointer's location on movement and clicks
+function spawnAtPointer(e: PointerEvent) {
+    const cellX = Math.floor(e.clientX / CELL_SIZE);
+    const cellY = Math.floor(e.clientY / CELL_SIZE);
+    const radius = Math.floor(Math.random() * MAX_CLUSTER_RADIUS) + MIN_CLUSTER_RADIUS;
+
+    spawnCluster(cellX, cellY, radius);
+}
+
 createWorld();
 scheduleSpawns();
-
 setInterval(update, UPDATE_INTERVAL_MS);
+
 window.addEventListener("resize", createWorld);
+window.addEventListener("pointerdown", spawnAtPointer);
+window.addEventListener("pointermove", (e) => {
+    if (Math.random() < POINTER_SENSITIVITY) spawnAtPointer(e);
+});
