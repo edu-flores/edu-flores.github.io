@@ -30,7 +30,7 @@ let colorTable: string[];
 
 const UPDATE_INTERVAL_MS = 70;
 const CELL_SIZE = 6;
-const CELL_GAP = 0;
+const CELL_GAP = 2;
 
 const MIN_SPAWN_DELAY_MS = 500;
 const MAX_SPAWN_DELAY_MS = 2000;
@@ -38,7 +38,7 @@ const MIN_CLUSTER_RADIUS = 2;
 const MAX_CLUSTER_RADIUS = 5;
 const CLUSTER_CELL_CHANCE = 0.30;
 const RANDOM_DEATH_CHANCE = 0.08;
-const POINTER_SENSITIVITY = 0.06;
+const POINTER_SENSITIVITY = 0.20;
 const GLOW_DECAY_RATE = 0.85;
 const GLOW_THRESHOLD = 0.05;
 
@@ -52,6 +52,8 @@ themeObserver.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["data-theme"],
 });
+
+const getRandIntInclusive = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 // Returns the array index for a given grid position
 const getIndex = (x: number, y: number) => y * cols + x;
@@ -212,14 +214,12 @@ function draw() {
 
 // Repeatedly spawns random cell clusters at random intervals
 function scheduleSpawns() {
-    const spawnDelay =
-        MIN_SPAWN_DELAY_MS +
-        Math.random() * (MAX_SPAWN_DELAY_MS - MIN_SPAWN_DELAY_MS);
+    const spawnDelay = getRandIntInclusive(MIN_SPAWN_DELAY_MS, MAX_SPAWN_DELAY_MS)
 
     setTimeout(() => {
         const spawnX = Math.floor(Math.random() * cols);
         const spawnY = Math.floor(Math.random() * rows);
-        const radius = Math.floor(Math.random() * MAX_CLUSTER_RADIUS) + MIN_CLUSTER_RADIUS;
+        const radius = getRandIntInclusive(MIN_CLUSTER_RADIUS, MAX_CLUSTER_RADIUS);
 
         spawnCluster(spawnX, spawnY, radius);
         scheduleSpawns();
@@ -230,7 +230,7 @@ function scheduleSpawns() {
 function spawnAtPointer(e: PointerEvent) {
     const cellX = Math.floor(e.clientX / CELL_SIZE);
     const cellY = Math.floor(e.clientY / CELL_SIZE);
-    const radius = Math.floor(Math.random() * MAX_CLUSTER_RADIUS) + MIN_CLUSTER_RADIUS;
+    const radius = getRandIntInclusive(MIN_CLUSTER_RADIUS, MAX_CLUSTER_RADIUS);
 
     spawnCluster(cellX, cellY, radius);
 }
