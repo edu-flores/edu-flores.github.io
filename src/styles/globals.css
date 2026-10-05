@@ -1,10 +1,16 @@
 /* Theme */
 
 :root {
-    color-scheme: light dark;
-    --bg: light-dark(#ebeef5, #050b12);
-    --fg: light-dark(#050b12, #ebeef5);
-    --fg-muted: light-dark(#050b1299, #ebeef5cc);
+    --dark-navy: #050b12;
+    --bone-white: #f9f6ee;
+    --highlight: #fce367;
+
+    --bg: light-dark(var(--bone-white), var(--dark-navy));
+    --fg: light-dark(var(--dark-navy), var(--bone-white));
+    --fg-muted: light-dark(
+        color-mix(in srgb, var(--dark-navy) 60%, transparent),
+        color-mix(in srgb, var(--bone-white) 80%, transparent)
+    );
 }
 
 [data-theme="light"] {
@@ -16,8 +22,8 @@
 }
 
 ::selection {
-    background-color: var(--fg);
-    color: var(--bg);
+    background-color: var(--highlight);
+    color: var(--dark-navy);
 }
 
 /* General */
