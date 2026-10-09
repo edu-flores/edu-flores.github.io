@@ -17,7 +17,7 @@ interface Props {
 const { image, title, source, external, description, tags, date } = Astro.props;
 ---
 
-<article>
+<article class="project">
     <a href={external} target="_blank" rel="noopener" class="project__image">
         <Image src={image} alt="" layout="fixed" width={image.width} height={image.height} />
     </a>

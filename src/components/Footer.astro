@@ -6,34 +6,46 @@ import MailIcon from "../assets/icons/mail.svg";
 
 <footer>
     <a
-        href="https://github.com/edu-flores"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-    >
-        <GithubIcon class="highlightable" width="24" height="24" />
-    </a>
-    <a
         href="https://www.linkedin.com/in/edu-floram"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
+        class="footer__link highlightable"
     >
-        <LinkedinIcon class="highlightable" width="24" height="24" />
+        <LinkedinIcon width="24" height="24" />
+        <span>LinkedIn</span>
+    </a>
+    <a
+        href="https://github.com/edu-flores"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="footer__link highlightable"
+    >
+        <GithubIcon width="24" height="24" />
+        <span>GitHub</span>
     </a>
     <a
         href="mailto:eduardo.floresramones@gmail.com"
         aria-label="Email"
+        class="footer__link highlightable"
     >
-        <MailIcon class="highlightable" width="24" height="24" />
+        <MailIcon width="24" height="24" />
+        <span>Email</span>
     </a>
 </footer>
 
 <style>
     footer {
-        margin-inline: auto;
+        margin-right: auto;
         display: flex;
-        gap: 0.5rem;
-        align-items: flex-end;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .footer__link {
+        display: flex;
+        align-items: center;
+        gap: 5px;
     }
 </style>
