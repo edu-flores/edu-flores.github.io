@@ -1,9 +1,9 @@
 /**
  *
- * Starts a background animation on a canvas element.
+ * Starts an interactive background animation on a canvas element.
  *
- * The animation is based on Conway's Game of Life, with a few modifications
- * to make it work well as a dynamic background. The basic rules of the game are:
+ * It is based on Conway's Game of Life, with a few modifications
+ * to make it work well as a dynamic background. The basic rules are:
  *
  *   - Live cells with < 2 live neighbors die (underpopulation)
  *   - Live cells with > 3 live neighbors die (overpopulation)
@@ -12,9 +12,10 @@
  *
  * The following modifications were made:
  *
- *   - Random clusters of cells appear every X seconds
+ *   - Base rules can be altered by setting a custom rulestring
  *   - Cells have a small chance of randomly dying (entropy!)
  *   - Users can move or click their mouse to create small disturbances
+ *   - Random clusters of cells can optionally appear every X seconds
  *
  * Cells are also not simply "alive" or "dead". Instead, they have an energy level
  * that gradually increases or decreases, allowing cells to slowly fade out as they die.
@@ -29,18 +30,24 @@ let currGrid: Uint8Array, nextGrid: Uint8Array, glowGrid: Float32Array;
 let colorTable: string[];
 let lastPointerSpawn = 0;
 
-const UPDATE_INTERVAL_MS = 70;
-const CELL_SIZE = 8;
-const CELL_GAP = 2;
+const rulestring = "B378/S235678"; // a.k.a. "Coagulations"
+const match = rulestring.match(/B(\d+)\/S(\d+)/);
+if (!match) throw Error(`Invalid rulestring: ${rulestring}`);
 
+const BIRTH = new Set([...match[1]].map(Number));
+const SURVIVAL = new Set([...match[2]].map(Number));
+const CELL_GAP = 2;
+const CELL_SIZE = 7;
+const UPDATE_INTERVAL_MS = 60;
+const RANDOM_SPAWNS_ENABLED = false;
 const MIN_SPAWN_DELAY_MS = 500;
 const MAX_SPAWN_DELAY_MS = 2000;
 const MIN_CLUSTER_RADIUS = 2;
-const MAX_CLUSTER_RADIUS = 6;
+const MAX_CLUSTER_RADIUS = 4;
 const CLUSTER_CELL_CHANCE = 0.30;
-const RANDOM_DEATH_CHANCE = 0.08;
+const RANDOM_DEATH_CHANCE = 0.15;
 const GLOW_DECAY_RATE = 0.85;
-const GLOW_THRESHOLD = 0.05;
+const GLOW_THRESHOLD = 0.30;
 const POINTER_SPAWN_COOLDOWN_MS = 50;
 
 // Change the canvas fillStyle on theme toggles
@@ -166,14 +173,14 @@ function step() {
 
             // Determine the next state of the current cell
             if (isAlive) {
-                const isUnderpopulated = neighbors < 2;
-                const isOverpopulated = neighbors > 3;
                 const isLucky = Math.random() > RANDOM_DEATH_CHANCE;
-                nextGrid[idx] = isUnderpopulated || isOverpopulated || !isLucky ? 0 : 1;
+                const willSurvive = SURVIVAL.has(neighbors) && isLucky;
+                nextGrid[idx] = willSurvive ? 1 : 0;
                 glowGrid[idx] = 1;
             } else {
-                const canReproduce = neighbors === 3;
-                nextGrid[idx] = canReproduce ? 1 : 0;
+                // const canReproduce = neighbors === 3;
+                const willBeBorn = BIRTH.has(neighbors);
+                nextGrid[idx] = willBeBorn ? 1 : 0;
                 glowGrid[idx] *= GLOW_DECAY_RATE;
             }
         }
@@ -245,12 +252,12 @@ function spawnAtPointer(e: PointerEvent) {
 }
 
 createWorld();
-scheduleSpawns();
+if (RANDOM_SPAWNS_ENABLED) scheduleSpawns();
 setInterval(update, UPDATE_INTERVAL_MS);
 
 window.addEventListener("resize", createWorld);
-window.addEventListener("pointerdown", spawnAtPointer);
-window.addEventListener("pointermove", (e) => {
+canvas.addEventListener("pointerdown", spawnAtPointer);
+canvas.addEventListener("pointermove", (e) => {
     const now = performance.now();
 
     if (now - lastPointerSpawn >= POINTER_SPAWN_COOLDOWN_MS) {
