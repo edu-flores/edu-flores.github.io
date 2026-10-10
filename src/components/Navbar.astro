@@ -7,7 +7,12 @@ const currentPath = pathname.slice(1);
 ---
 
 <nav>
-    <button id="highlight-wave" class="navbar__logo" aria-label="Highlight wave">
+    <button
+        id="logo-button"
+        class="navbar__logo md"
+        aria-label="Play animation"
+        type="button"
+    >
         <span><b>E</b>F</span>
     </button>
 
@@ -34,7 +39,12 @@ const currentPath = pathname.slice(1);
             More
         </a>
 
-        <button class="navbar__theme-toggle flex highlightable" aria-label="Toggle theme">
+        <button
+            id="theme-toggle"
+            class="navbar__theme-toggle flex highlightable"
+            aria-label="Toggle theme"
+            type="button"
+        >
             <SunIcon class="navbar__light-icon" width="24" height="24" />
             <MoonIcon class="navbar__dark-icon" width="24" height="24" />
         </button>
@@ -44,11 +54,17 @@ const currentPath = pathname.slice(1);
 <style>
     nav {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
     }
 
     .navbar__logo {
         font-size: 18px;
+        margin-right: auto;
+    }
+
+    .navbar__logo:active {
+        transform: scale(0.99) translateY(1px);
+        opacity: 0.8;
     }
 
     .navbar__links {
@@ -77,9 +93,9 @@ const currentPath = pathname.slice(1);
 
 <script>
     document.addEventListener("astro:page-load", () => {
-        const button = document.querySelector(".navbar__theme-toggle");
+        const toggler = document.getElementById("theme-toggle");
 
-        button?.addEventListener("click", () => {
+        toggler?.addEventListener("click", () => {
             const html = document.documentElement;
             const currentTheme = html.dataset.theme;
             html.dataset.theme = currentTheme === "dark" ? "light" : "dark";
