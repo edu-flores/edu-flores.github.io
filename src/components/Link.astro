@@ -1,0 +1,50 @@
+---
+import ArrowIcon from "../assets/icons/arrow.svg";
+
+interface Props {
+    href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer" class="link loud">
+    <span class="link__text"><slot /></span>
+    <ArrowIcon color="var(--highlight)" width="16" height="16" class="link__arrow" aria-hidden="true" />
+</a>
+
+<style>
+    .link:hover {
+        text-shadow: 0.25px 0 var(--fg), -0.25px 0 var(--fg);
+    }
+
+    .link__text {
+        transition: text-shadow 0.25s ease;
+        position: relative;
+    }
+
+    .link__text::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .link:hover .link__text::after {
+        opacity: 1;
+    }
+
+    .link__arrow {
+        vertical-align: middle;
+        transition: transform 0.25s ease;
+    }
+
+    .link:hover .link__arrow {
+        transform: translateY(-1px);
+    }
+</style>
