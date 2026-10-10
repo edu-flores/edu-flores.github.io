@@ -22,7 +22,6 @@
  *
  */
 
-const logo = document.getElementById("logo-button") as HTMLButtonElement;
 const canvas = document.getElementById("game-of-life") as HTMLCanvasElement;
 const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
@@ -30,13 +29,16 @@ let cols = 0, rows = 0;
 let currGrid: Uint8Array, nextGrid: Uint8Array, glowGrid: Float32Array;
 let colorTable: string[];
 let lastPointerSpawn = 0;
+let baseColor = getComputedStyle(canvas).color;
 
-const rulestring = "B378/S235678"; // a.k.a. "Coagulations"
+// a.k.a. "Coagulations" - https://conwaylife.com/wiki/OCA:Coagulations
+const rulestring = "B378/S235678";
 const match = rulestring.match(/B(\d+)\/S(\d+)/);
 if (!match) throw Error(`Invalid rulestring: ${rulestring}`);
-
 const BIRTH = new Set([...match[1]].map(Number));
 const SURVIVAL = new Set([...match[2]].map(Number));
+
+// Tha knobs
 const CELL_GAP = 2;
 const CELL_SIZE = 7;
 const UPDATE_INTERVAL_MS = 60;
@@ -56,7 +58,7 @@ const POINTER_SPAWN_COOLDOWN_MS = 50;
 
 // Change the canvas fillStyle on theme toggles
 const themeObserver = new MutationObserver(() => {
-    setBaseColor(getComputedStyle(canvas).color);
+    baseColor = getComputedStyle(canvas).color;
     draw();
 });
 
@@ -72,16 +74,6 @@ const getIndex = (x: number, y: number) => y * cols + x;
 
 // Advances the simulation and redraws the canvas
 const update = () => { step(); draw(); };
-
-// Pre-computes all 256 possible opacities based on the base color
-function setBaseColor(baseColor: string) {
-    const prefix = baseColor.slice(0, -1);
-
-    colorTable = Array.from(
-        { length: 256 },
-        (_, i) => `${prefix}, ${i / 255})`
-    );
-}
 
 // Creates a new grid based on the current window size
 function createWorld() {
@@ -104,10 +96,6 @@ function createWorld() {
     canvas.height = Math.floor(window.innerHeight * scale);
 
     context.setTransform(scale, 0, 0, scale, 0, 0);
-
-    // ---
-
-    setBaseColor(getComputedStyle(canvas).color);
 }
 
 // Spawns a random cluster of cells at the given position
@@ -224,7 +212,8 @@ function draw() {
             //   4 . █ █ █ █ .
             //   5 . . . . . .
 
-            context.fillStyle = colorTable[Math.floor(glow * 255)];
+            context.fillStyle = baseColor;
+            context.globalAlpha = glow;
             context.fillRect(
                 cellX + CELL_GAP / 2,
                 cellY + CELL_GAP / 2,
@@ -281,9 +270,6 @@ setInterval(update, UPDATE_INTERVAL_MS);
 // Start the world over on window resizes
 window.addEventListener("resize", createWorld);
 
-// Spawn multiple cell clusters on logo clicks
-logo.addEventListener("click", spawnClusterBurst);
-
 // Spawn a big cell cluster at the mouse location on every click
 canvas.addEventListener("pointerdown", spawnAtPointer);
 
@@ -295,4 +281,11 @@ canvas.addEventListener("pointermove", (e) => {
         lastPointerSpawn = now;
         spawnAtPointer(e, false);
     }
+});
+
+// Spawn multiple cell clusters on logo clicks
+document.addEventListener("astro:page-load", () => {
+    const logo = document.getElementById("logo-button");
+
+    logo?.addEventListener("click", spawnClusterBurst);
 });
