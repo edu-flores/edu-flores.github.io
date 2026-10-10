@@ -22,8 +22,9 @@
  *
  */
 
+const logo = document.getElementById("logo-button") as HTMLButtonElement;
 const canvas = document.getElementById("game-of-life") as HTMLCanvasElement;
-const context = canvas.getContext("2d")!;
+const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
 let cols = 0, rows = 0;
 let currGrid: Uint8Array, nextGrid: Uint8Array, glowGrid: Float32Array;
@@ -42,9 +43,12 @@ const UPDATE_INTERVAL_MS = 60;
 const RANDOM_SPAWNS_ENABLED = false;
 const MIN_SPAWN_DELAY_MS = 500;
 const MAX_SPAWN_DELAY_MS = 2000;
-const MIN_CLUSTER_RADIUS = 2;
-const MAX_CLUSTER_RADIUS = 4;
+const MIN_CLUSTER_RADIUS = 3;
+const MAX_CLUSTER_RADIUS = 5;
 const CLUSTER_CELL_CHANCE = 0.30;
+const CLUSTER_EXPANSION_FACTOR = 2;
+const CLUSTER_BURST_COUNT = 5;
+const CLUSTER_BURST_INTERVAL = 50;
 const RANDOM_DEATH_CHANCE = 0.15;
 const GLOW_DECAY_RATE = 0.85;
 const GLOW_THRESHOLD = 0.30;
@@ -110,6 +114,9 @@ function createWorld() {
 function spawnCluster(x: number, y: number, radius: number) {
     for (let offsetX = -radius; offsetX <= radius; offsetX++) {
         for (let offsetY = -radius; offsetY <= radius; offsetY++) {
+
+            // Skip cells outside circular radius
+            if (offsetX * offsetX + offsetY * offsetY > radius * radius) continue;
 
             // Randomly skip cells to not spawn perfect shapes
             if (Math.random() > CLUSTER_CELL_CHANCE) continue;
@@ -242,26 +249,50 @@ function scheduleSpawns() {
     }, spawnDelay);
 }
 
-// Spawn clusters at the pointer's location on movement and clicks
-function spawnAtPointer(e: PointerEvent) {
+// Spawn an optionally expanded cell cluster at the given location
+function spawnAtPointer(e: PointerEvent, expandedCluster = true) {
     const cellX = Math.floor(e.clientX / CELL_SIZE);
     const cellY = Math.floor(e.clientY / CELL_SIZE);
-    const radius = getRandIntInclusive(MIN_CLUSTER_RADIUS, MAX_CLUSTER_RADIUS);
+
+    let radius = getRandIntInclusive(MIN_CLUSTER_RADIUS, MAX_CLUSTER_RADIUS);
+    if (expandedCluster) radius *= CLUSTER_EXPANSION_FACTOR;
 
     spawnCluster(cellX, cellY, radius);
 }
 
+// Spawns a burst of randomly positioned clusters at staggered intervals
+function spawnClusterBurst() {
+    for (let count = 0; count < CLUSTER_BURST_COUNT; count++) {
+        const cellX = getRandIntInclusive(0, cols - 1);
+        const cellY = getRandIntInclusive(0, rows - 1);
+        const radius = getRandIntInclusive(MIN_CLUSTER_RADIUS, MAX_CLUSTER_RADIUS)
+            * CLUSTER_EXPANSION_FACTOR;
+
+        setTimeout(() => spawnCluster(cellX, cellY, radius), count * CLUSTER_BURST_INTERVAL);
+    }
+}
+
+// Setup
 createWorld();
+spawnClusterBurst();
 if (RANDOM_SPAWNS_ENABLED) scheduleSpawns();
 setInterval(update, UPDATE_INTERVAL_MS);
 
+// Start the world over on window resizes
 window.addEventListener("resize", createWorld);
+
+// Spawn multiple cell clusters on logo clicks
+logo.addEventListener("click", spawnClusterBurst);
+
+// Spawn a big cell cluster at the mouse location on every click
 canvas.addEventListener("pointerdown", spawnAtPointer);
+
+// Spawn a small cell cluster at the mouse location periodically
 canvas.addEventListener("pointermove", (e) => {
     const now = performance.now();
 
     if (now - lastPointerSpawn >= POINTER_SPAWN_COOLDOWN_MS) {
         lastPointerSpawn = now;
-        spawnAtPointer(e);
+        spawnAtPointer(e, false);
     }
 });
