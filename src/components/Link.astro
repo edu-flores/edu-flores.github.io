@@ -4,14 +4,16 @@ import ArrowIcon from "../assets/icons/arrow.svg";
 interface Props {
     href: string;
     newTab?: boolean;
+    label?: string;
 }
 
-const { href, newTab = true } = Astro.props;
+const { href, newTab = true, label } = Astro.props;
 ---
 
 <a
     href={href}
     target={newTab ? "_blank" : undefined}
+    aria-label={label ?? undefined}
     rel="noopener noreferrer"
     class="link loud"
 >
