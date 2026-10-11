@@ -1,0 +1,19 @@
+---
+interface Props {
+    color: string;
+}
+
+const { color } = Astro.props;
+---
+
+<span class="hex" style=`background-color: ${color}`></span>
+
+<style>
+    .hex {
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        border: 1px solid light-dark(black, white);
+        border-radius: 2px;
+    }
+</style>
