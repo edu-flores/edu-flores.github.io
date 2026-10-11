@@ -4,12 +4,11 @@
     --dark-navy: #050b12;
     --bone-white: #f9f6ee;
     --highlight: #fce367;
-    --accent: #785ce5;
 
     --bg: light-dark(var(--bone-white), var(--dark-navy));
     --fg: light-dark(var(--dark-navy), var(--bone-white));
     --fg-muted: light-dark(
-        color-mix(in srgb, var(--dark-navy) 60%, transparent),
+        color-mix(in srgb, var(--dark-navy) 70%, transparent),
         color-mix(in srgb, var(--bone-white) 80%, transparent)
     );
 }
@@ -70,7 +69,7 @@ ol, ul {
 }
 
 *:focus-visible {
-    outline: 2px dashed var(--accent);
+    outline: 2px dotted var(--fg);
     outline-offset: 6px;
     border-radius: 1px;
 }

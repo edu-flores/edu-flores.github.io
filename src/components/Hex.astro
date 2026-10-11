@@ -6,7 +6,7 @@ interface Props {
 const { color } = Astro.props;
 ---
 
-<span class="hex" style=`background-color: ${color}`></span>
+<span class="hex" style=`background-color: var(${color})`></span>
 
 <style>
     .hex {

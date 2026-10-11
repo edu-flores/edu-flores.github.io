@@ -3,23 +3,30 @@ import ArrowIcon from "../assets/icons/arrow.svg";
 
 interface Props {
     href: string;
+    newTab?: boolean;
 }
 
-const { href } = Astro.props;
+const { href, newTab = true } = Astro.props;
 ---
 
-<a href={href} target="_blank" rel="noopener noreferrer" class="link loud">
+<a
+    href={href}
+    target={newTab ? "_blank" : undefined}
+    rel="noopener noreferrer"
+    class="link loud"
+>
     <span class="link__text"><slot /></span>
-    <ArrowIcon color="var(--highlight)" width="16" height="16" class="link__arrow" aria-hidden="true" />
+    <ArrowIcon width="16" height="16" class="link__arrow" aria-hidden="true" />
 </a>
 
 <style>
-    .link:hover {
-        text-shadow: 0.25px 0 var(--fg), -0.25px 0 var(--fg);
+    .link {
+        white-space: nowrap;
+        font-weight: bold;
+        transition: color 0.25s ease;
     }
 
     .link__text {
-        transition: text-shadow 0.25s ease;
         position: relative;
     }
 
@@ -42,9 +49,10 @@ const { href } = Astro.props;
     .link__arrow {
         vertical-align: middle;
         transition: transform 0.25s ease;
+        margin-bottom: 3px;
     }
 
     .link:hover .link__arrow {
-        transform: translateY(-1px);
+        transform: translateY(-2px);
     }
 </style>

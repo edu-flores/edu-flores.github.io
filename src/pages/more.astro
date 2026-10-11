@@ -1,6 +1,133 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Link from "../components/Link.astro";
+import Hex from "../components/Hex.astro";
+
+const lastUpdated = __BUILD_DATE__;
 ---
 
 <Layout pageTitle="More">
+    <div class="more">
+        <div class="more__me">
+            <h1 class="more__heading loud">The Man</h1>
+
+            <div class="more__content">
+                <Section title="Interests" compact>
+                    <p>I love calisthenics, guitars, books, tennis, and Linux!</p>
+                </Section>
+
+                <Section title="Some Principles" compact>
+                    <ol class="more__principles">
+                        <li>
+                            Use Simplified Technical English&nbsp;
+                            <sup class="reference md">
+                                <Link href="https://wikipedia.org/wiki/Simplified_Technical_English"></Link>
+                            </sup>
+                        </li>
+                        <li>Question your coding agents</li>
+                        <li>Strive for self-documenting code&nbsp;
+                            <sup class="reference md">
+                                <Link href="https://wikipedia.org/wiki/Self-documenting_code"></Link>
+                            </sup>
+                        </li>
+                        <li>Debloat everything you can</li>
+                    </ol>
+                </Section>
+
+                <Section title="Contact" compact>
+                    <p>
+                        Feel free to contact me by <Link href="https://www.linkedin.com/in/edu-floram">LinkedIn</Link> or <Link href="mailto:eduardo.floresramones@gmail.com">email</Link> and
+                        check out my <Link href="/resume.pdf">resume</Link>.
+                    </p>
+                </Section>
+            </div>
+        </div>
+
+        <div class="more__site">
+            <h1 class="more__heading loud">The Website</h1>
+
+            <div class="more__dates">
+                <p>Created October 2026</p>
+                {lastUpdated && <p>Updated {lastUpdated}</p>}
+            </div>
+
+            <div class="more__content">
+                <Section title="Colophon" compact>
+
+                    <div class="more__details">
+                        <p>
+                            <b>Stack</b> ➜ Astro, TypeScript, CSS
+                        </p>
+                        <p>
+                            <b>Style</b> ➜ Inter typeface
+                            &nbsp;<Hex color="--bg" />
+                            &nbsp;<Hex color="--fg" />
+                            &nbsp;<Hex color="--fg-muted" />
+                            &nbsp;<Hex color="--highlight" />
+                        </p>
+                    </div>
+
+                    <p>Take a peak at the <Link href="https://github.com/edu-flores/edu-flores.github.io">source code</Link> or <Link href="/">traffic analytics</Link> of the site.</p>
+                </Section>
+
+                <Section title="Background" compact>
+                    <p>
+                        The (desktop) background is a variation of <Link href="https://wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</Link> cellular
+                        automation; it uses the <i>Coagulations</i> rulestring, and cells can randomly perish.
+                    </p>
+                </Section>
+            </div>
+        </div>
+    </div>
 </Layout>
+
+<style>
+    .more {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .more__heading {
+        font-size: 24px;
+        margin-bottom: 1rem;
+    }
+
+    .more__dates {
+        font-size: 14px;
+        margin-bottom: 1rem;
+    }
+
+    .more__details {
+        margin-bottom: 1rem;
+    }
+
+    .more__content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .more__principles {
+        line-height: 24px;
+    }
+
+    /* References */
+
+    .more {
+        counter-reset: reference;
+    }
+
+    .more :global(sup.reference) {
+        counter-increment: reference;
+        position: relative;
+        top: -5px;
+        vertical-align: baseline;
+    }
+
+    .more :global(sup.reference a::before) {
+        content: "[" counter(reference) "]";
+        font-size: 12px;
+    }
+</style>
