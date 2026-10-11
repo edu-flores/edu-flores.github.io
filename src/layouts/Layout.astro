@@ -37,6 +37,19 @@ const { pageTitle } = Astro.props;
             applyTheme();
             document.addEventListener("astro:page-load", applyTheme);
         </script>
+        <script is:inline>
+            console.log(
+                "%c💻 Hey! Looking for the source code? Here: https://github.com/edu-flores/edu-flores.github.io",
+                `
+                    background: #050b12;
+                    color: #f9f6ee;
+                    padding: 1rem;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    font-weight: bold;
+                `
+            );
+        </script>
         <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="2a30e73b-ba64-4cbd-b45e-b609fff784c8"></script>
     </head>
     <body>
