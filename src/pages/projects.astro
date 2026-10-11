@@ -37,7 +37,7 @@ const projects: ProjectProps[] = [
 ---
 
 <Layout pageTitle="Projects">
-    <div class="projects__container">
+    <div class="projects">
         {projects.map((project) => (
             <Project {...project} />
         ))}
@@ -45,7 +45,7 @@ const projects: ProjectProps[] = [
 </Layout>
 
 <style>
-    .projects__container {
+    .projects {
         margin-block: 1rem;
         display: flex;
         flex-direction: column;

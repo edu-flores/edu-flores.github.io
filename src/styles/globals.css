@@ -4,6 +4,7 @@
     --dark-navy: #050b12;
     --bone-white: #f9f6ee;
     --highlight: #fce367;
+    --accent: #785ce5;
 
     --bg: light-dark(var(--bone-white), var(--dark-navy));
     --fg: light-dark(var(--dark-navy), var(--bone-white));
@@ -62,6 +63,16 @@ button {
 a {
     color: inherit;
     text-decoration: unset;
+}
+
+ol, ul {
+    list-style-position: inside;
+}
+
+*:focus-visible {
+    outline: 2px dashed var(--accent);
+    outline-offset: 6px;
+    border-radius: 1px;
 }
 
 /* Utility */
