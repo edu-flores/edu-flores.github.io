@@ -1,0 +1,23 @@
+---
+import type { SvgComponent } from 'astro/types';
+
+interface Props {
+    icon: SvgComponent;
+    name: string;
+}
+
+const { icon: Icon, name } = Astro.props;
+---
+
+<div class="technology elevate">
+    <Icon stroke="var(--fg)" width="22" height="22" aria-hidden="true" />
+    <span>{name}</span>
+</div>
+
+<style>
+    .technology {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+</style>

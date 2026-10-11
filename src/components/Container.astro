@@ -1,0 +1,25 @@
+---
+import Navbar from "./Navbar.astro";
+import Footer from "./Footer.astro";
+---
+
+<div class="container">
+    <Navbar />
+    <slot />
+    <Footer />
+</div>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 3rem;
+        position: relative;
+        background-color: var(--bg);
+        max-width: 42rem;
+        min-height: 100vh;
+        margin-inline: auto;
+        padding: 1rem 2rem;
+    }
+</style>

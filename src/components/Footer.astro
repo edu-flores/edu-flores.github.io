@@ -1,0 +1,48 @@
+---
+import GithubIcon from "../assets/icons/github.svg";
+import LinkedinIcon from "../assets/icons/linkedin.svg";
+import MailIcon from "../assets/icons/mail.svg";
+---
+
+<footer>
+    <a
+        href="https://www.linkedin.com/in/edu-floram"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer__link highlightable"
+    >
+        <LinkedinIcon width="24" height="24" aria-hidden="true" />
+        <span class="md">LinkedIn</span>
+    </a>
+    <a
+        href="https://github.com/edu-flores"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer__link highlightable"
+    >
+        <GithubIcon width="24" height="24" aria-hidden="true" />
+        <span class="md">GitHub</span>
+    </a>
+    <a
+        href="mailto:eduardo.floresramones@gmail.com"
+        class="footer__link highlightable"
+    >
+        <MailIcon width="24" height="24" aria-hidden="true" />
+        <span class="md">Email</span>
+    </a>
+</footer>
+
+<style>
+    footer {
+        margin-right: auto;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .footer__link {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+</style>

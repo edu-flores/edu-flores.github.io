@@ -1,0 +1,105 @@
+---
+import SunIcon from "../assets/icons/sun.svg";
+import MoonIcon from "../assets/icons/moon.svg";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<nav>
+    <button
+        id="logo-button"
+        class="navbar__logo"
+        aria-label="Play animation"
+        type="button"
+    >
+        <span><b>E</b>F</span>
+    </button>
+
+    <div class="navbar__links">
+        <a
+            href="/"
+            class="highlightable"
+            class:list={{ "navbar__link--active": currentPath === "" }}
+        >
+            Home
+        </a>
+        <a
+            href="/projects"
+            class="highlightable"
+            class:list={{ "navbar__link--active": currentPath === "projects" }}
+        >
+            Projects
+        </a>
+        <a
+            href="/about"
+            class="highlightable"
+            class:list={{ "navbar__link--active": currentPath === "about" }}
+        >
+            About
+        </a>
+
+        <button
+            id="theme-toggle"
+            class="navbar__theme-toggle flex highlightable"
+            aria-label="Toggle theme"
+            type="button"
+        >
+            <SunIcon class="navbar__light-icon" width="24" height="24" />
+            <MoonIcon class="navbar__dark-icon" width="24" height="24" />
+        </button>
+    </div>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .navbar__logo {
+        font-size: 18px;
+        margin-right: auto;
+    }
+
+    .navbar__logo:active {
+        transform: scale(0.99) translateY(1px);
+        opacity: 0.8;
+    }
+
+    .navbar__links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .navbar__links a {
+        transition: color 0.25s ease;
+    }
+
+    .navbar__links a.navbar__link--active {
+        color: var(--fg);
+        font-weight: bold;
+    }
+
+    :global(html[data-theme="light"]) .navbar__light-icon {
+        display: none;
+    }
+
+    :global(html[data-theme="dark"]) .navbar__dark-icon {
+        display: none;
+    }
+</style>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const toggler = document.getElementById("theme-toggle");
+
+        toggler?.addEventListener("click", () => {
+            const html = document.documentElement;
+            const currentTheme = html.dataset.theme;
+            html.dataset.theme = currentTheme === "dark" ? "light" : "dark";
+            localStorage.setItem("theme", html.dataset.theme);
+        });
+    });
+</script>

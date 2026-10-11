@@ -1,13 +1,23 @@
-<br>
 <div align="center">
-    <img width="50" src="./images/favicon.ico" alt="Logo">
+    <img width="50" src="./public/favicon.svg" alt="Logo">
     <h1>Personal Portfolio</h1>
-    <h3>Eduardo Flores Ramones</h3>
+    <h3 style="margin: 0">Eduardo Flores Ramones</h3>
+    <br>
 </div>
-<br>
 
-A website I developed with pure vanilla `HTML5`, `CSS3` and `JavaScript`. A mobile-first design paradigm was taken into consideration while creating the site. Here, I'll store my projects and display my contact information.
+My personal website, where I share a bit about my developer profile. Built with Astro, deployed with GitHub Pages.
 
-Initial Figma design: [Click](https://www.figma.com/file/bH7hTXvHlq1NUDmqLl5abM/Portfolio?node-id=0%3A1&t=vyxrHbdmA1bwgcVV-1)
+### Goals
 
-![Portfolio Demo](./images/portfolio.gif)
+- Preferably no scrolling
+- Few, unobtrusive animations
+- One eye-catching interactive component
+- Blackish and whiteish
+- Concise; no buzzwords or walls of text
+- Little hidden details here and there
+
+### TODO
+
+- Add more projects
+- Expose background knobs
+- Make the Style section more useful

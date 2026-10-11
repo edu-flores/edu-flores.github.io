@@ -1,0 +1,60 @@
+---
+import ArrowIcon from "../assets/icons/arrow.svg";
+
+interface Props {
+    href: string;
+    newTab?: boolean;
+    label?: string;
+}
+
+const { href, newTab = true, label } = Astro.props;
+---
+
+<a
+    href={href}
+    target={newTab ? "_blank" : undefined}
+    aria-label={label ?? undefined}
+    rel="noopener noreferrer"
+    class="link loud"
+>
+    <span class="link__text"><slot /></span>
+    <ArrowIcon width="16" height="16" class="link__arrow" aria-hidden="true" />
+</a>
+
+<style>
+    .link {
+        white-space: nowrap;
+        font-weight: bold;
+        transition: color 0.25s ease;
+    }
+
+    .link__text {
+        position: relative;
+    }
+
+    .link__text::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .link:hover .link__text::after {
+        opacity: 1;
+    }
+
+    .link__arrow {
+        vertical-align: middle;
+        transition: transform 0.25s ease;
+        margin-bottom: 3px;
+    }
+
+    .link:hover .link__arrow {
+        transform: translateY(-2px);
+    }
+</style>

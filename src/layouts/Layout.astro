@@ -1,0 +1,61 @@
+---
+import "@fontsource/inter";
+import "../styles/globals.css";
+
+import Background from "../components/Background.astro";
+import Container from "../components/Container.astro";
+import { ClientRouter } from "astro:transitions";
+
+interface Props {
+    pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle} | Eduardo Flores</title>
+
+        <ClientRouter />
+        <script is:inline>
+            function applyTheme() {
+                const savedTheme = localStorage.getItem("theme");
+                const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? "dark"
+                    : "light";
+
+                document.documentElement.dataset.theme = savedTheme || systemTheme;
+            }
+
+            applyTheme();
+            document.addEventListener("astro:page-load", applyTheme);
+        </script>
+        <script is:inline>
+            console.log(
+                "%c💻 Hey! Looking for the source code? Here: https://github.com/edu-flores/edu-flores.github.io",
+                `
+                    background: #050b12;
+                    color: #f9f6ee;
+                    padding: 1rem;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    font-weight: bold;
+                `
+            );
+        </script>
+        <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="2a30e73b-ba64-4cbd-b45e-b609fff784c8"></script>
+    </head>
+    <body>
+        <Background />
+        <Container>
+            <slot />
+        </Container>
+    </body>
+</html>

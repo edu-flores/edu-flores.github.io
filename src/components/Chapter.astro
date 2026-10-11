@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+    image: ImageMetadata;
+    link: string;
+    primary: string;
+    secondary: string;
+    period: string;
+}
+
+const { image, link, primary, secondary, period } = Astro.props;
+---
+
+<article class="chapter">
+    <div class="flex">
+        <a href={link} target="_blank" rel="noopener noreferrer">
+            <Image src={image} alt="" width="20" height="20" />
+            <span class="chapter__primary">{primary}</span>
+        </a>
+
+        <span class="chapter__secondary">{secondary}</span>
+    </div>
+
+    <span class="chapter__period sm">{period}</span>
+</article>
+
+<style>
+    .chapter {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .chapter__primary {
+        color: var(--fg);
+        text-shadow: 0 0 0 transparent;
+        transition: text-shadow 0.25s ease;
+    }
+
+    .chapter:hover .chapter__primary {
+        text-shadow: 0.25px 0 var(--fg), -0.25px 0 var(--fg);
+    }
+
+    .chapter a {
+        display: flex;
+        gap: 10px;
+    }
+
+    .chapter__secondary {
+        padding-left: 1.25rem;
+        text-indent: -1.25rem;
+    }
+
+    .chapter__secondary::before {
+        content: "|";
+        margin-inline: 0.5rem;
+    }
+
+    .chapter__period {
+        font-size: 14px;
+    }
+</style>

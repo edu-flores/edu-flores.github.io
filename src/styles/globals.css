@@ -1,0 +1,117 @@
+/* Theme */
+
+:root {
+    --dark-navy: #050b12;
+    --bone-white: #f9f6ee;
+    --highlight: #fce367;
+
+    --bg: light-dark(var(--bone-white), var(--dark-navy));
+    --fg: light-dark(var(--dark-navy), var(--bone-white));
+    --fg-muted: light-dark(
+        color-mix(in srgb, var(--dark-navy) 70%, transparent),
+        color-mix(in srgb, var(--bone-white) 80%, transparent)
+    );
+}
+
+[data-theme="light"] {
+    color-scheme: light;
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+::selection {
+    background-color: var(--highlight);
+    color: var(--dark-navy);
+}
+
+/* General */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--fg) transparent;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg);
+    color: var(--fg-muted);
+}
+
+p {
+    line-height: 24px;
+}
+
+b, strong {
+    color: var(--fg);
+    font-weight: bold;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: unset;
+}
+
+ol, ul {
+    list-style-position: inside;
+}
+
+*:focus-visible {
+    outline: 2px dotted var(--fg);
+    outline-offset: 6px;
+    border-radius: 1px;
+}
+
+/* Utility */
+
+.loud {
+    color: var(--fg);
+}
+
+.flex {
+    display: flex;
+}
+
+/* Responsiveness */
+
+@media (max-width: 576px) {
+  .sm {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .md {
+    display: none !important;
+  }
+}
+
+/* Animations */
+
+.elevate {
+    transition: transform 0.25s ease;
+}
+
+.elevate:hover {
+    transform: translateY(-2px);
+}
+
+.highlightable {
+    transition: color 0.25s ease;
+}
+
+.highlightable:hover {
+    color: var(--fg);
+}

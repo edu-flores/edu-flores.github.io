@@ -1,0 +1,172 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Chapter from "../components/Chapter.astro";
+import Technology from "../components/Technology.astro";
+import type { ComponentProps } from "astro/types";
+
+import EtsyImage from "../assets/imgs/etsy.png";
+import ReverbImage from "../assets/imgs/reverb.png";
+import KatconImage from "../assets/imgs/katcon.png";
+import UdemImage from "../assets/imgs/udem.png";
+
+// https://hugeicons.com
+import LocationIcon from "../assets/icons/location.svg";
+import PythonIcon from "../assets/icons/python.svg";
+import TypeScriptIcon from "../assets/icons/typescript.svg";
+import BashIcon from "../assets/icons/bash.svg";
+import BracesIcon from "../assets/icons/braces.svg";
+import ReactIcon from "../assets/icons/react.svg";
+import TailwindIcon from "../assets/icons/tailwind.svg";
+import DatabaseIcon from "../assets/icons/database.svg";
+import CloudIcon from "../assets/icons/cloud.svg";
+
+const dob = new Date("2001-07-04");
+const age = new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970;
+
+type ChapterProps = ComponentProps<typeof Chapter>;
+
+const experience: ChapterProps[] = [
+  {
+    image: EtsyImage,
+    link: "https://www.etsy.com",
+    primary: "Etsy",
+    secondary: "SWE II · Infrastructure",
+    period: "Dec '25 – Present",
+  },
+  {
+    image: ReverbImage,
+    link: "https://reverb.com",
+    primary: "Reverb",
+    secondary: "SWE II · Revenue",
+    period: "May '25 – Dec '25",
+  },
+  {
+    image: KatconImage,
+    link: "https://katcon.com",
+    primary: "Katcon",
+    secondary: "SWE · Digitalization",
+    period: "Oct '23 – Mar '25",
+  },
+];
+
+const education: ChapterProps[] = [
+  {
+    image: UdemImage,
+    link: "https://www.udem.edu.mx",
+    primary: "UDEM",
+    secondary: "B.S. in Computer Science",
+    period: "Aug '20 – Dec '24",
+  },
+];
+
+type TechnologyProps = ComponentProps<typeof Technology>;
+
+const technologies: TechnologyProps[]  = [
+    { icon: PythonIcon, name: "Python" },
+    { icon: TypeScriptIcon, name: "TypeScript" },
+    { icon: BracesIcon, name: "Go" },
+    { icon: BashIcon, name: "Bash" },
+    { icon: ReactIcon, name: "React" },
+    { icon: TailwindIcon, name: "Tailwind" },
+    { icon: DatabaseIcon, name: "PostgreSQL" },
+    { icon: CloudIcon, name: "AWS/GCP" },
+];
+---
+
+<Layout pageTitle="Home">
+    <main class="home">
+        <header>
+            <h1 class="home__title loud">Eduardo Flores</h1>
+
+            <div class="home__subtitle loud">
+                <span>Software Engineer II</span>
+
+                <a
+                    href="https://maps.app.goo.gl/SCTv6cgUrtDaRkgt9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="home__location elevate"
+                    aria-label="Open Monterrey, Mexico in Google Maps"
+                >
+                    <LocationIcon width="22" height="22" aria-hidden="true" />
+                    <span>Mty, Mexico</span>
+                </a>
+            </div>
+
+            <p>
+                I fell for the internet at a young age. Now, at {age} and <strong>working in tech full time</strong>,
+                I'm captivated by how quickly and drastically the field is changing.
+            </p>
+        </header>
+
+        <Section title="Experience">
+            <ol reversed class="home__list home__list--experience">
+                {experience.map((exp) => (
+                    <li><Chapter {...exp} /></li>
+                ))}
+            </ol>
+        </Section>
+
+        <Section title="Education">
+            <ol reversed class="home__list home__list--education">
+                {education.map((edu) => (
+                    <li><Chapter {...edu} /></li>
+                ))}
+            </ol>
+        </Section>
+
+        <Section title="Favorite Technologies">
+            <ul class="home__list home__list--technologies">
+                {technologies.map((tech) => (
+                    <li><Technology {...tech} /></li>
+                ))}
+            </ul>
+        </Section>
+    </main>
+</Layout>
+
+<style>
+    .home {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .home__title {
+        font-size: 24px;
+        margin-bottom: 0.5rem;
+    }
+
+    .home__subtitle {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .home__location {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .home__list {
+        list-style-type: none;
+    }
+
+    .home__list--experience,
+    .home__list--education {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .home__list--technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+</style>
