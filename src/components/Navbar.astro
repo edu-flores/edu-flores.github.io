@@ -3,7 +3,7 @@ import SunIcon from "../assets/icons/sun.svg";
 import MoonIcon from "../assets/icons/moon.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1);
+const currentPath = pathname.replace(/^\/|\/$/g, "");
 ---
 
 <nav>
