@@ -8,7 +8,7 @@ const lastUpdated = __BUILD_DATE__;
 ---
 
 <Layout pageTitle="About">
-    <div class="about">
+    <main class="about">
         <div class="about__me">
             <h1 class="about__heading loud">The Man</h1>
 
@@ -20,13 +20,14 @@ const lastUpdated = __BUILD_DATE__;
                 <Section title="Some Principles" compact>
                     <ol class="about__principles">
                         <li>
-                            Use Simplified Technical English&nbsp;
+                            Use Simplified Technical English{" "}
                             <sup class="reference md">
                                 <Link href="https://wikipedia.org/wiki/Simplified_Technical_English"></Link>
                             </sup>
                         </li>
                         <li>Question your coding agents</li>
-                        <li>Strive for self-documenting code&nbsp;
+                        <li>
+                            Strive for self-documenting code{" "}
                             <sup class="reference md">
                                 <Link href="https://wikipedia.org/wiki/Self-documenting_code"></Link>
                             </sup>
@@ -37,8 +38,10 @@ const lastUpdated = __BUILD_DATE__;
 
                 <Section title="Contact" compact>
                     <p>
-                        Feel free to contact me by <Link href="https://www.linkedin.com/in/edu-floram">LinkedIn</Link> or <Link href="mailto:eduardo.floresramones@gmail.com">email</Link> and
-                        check out my <Link href="/resume.pdf">resume</Link>.
+                        Feel free to contact me by{" "}
+                        <Link href="https://www.linkedin.com/in/edu-floram">LinkedIn</Link> or{" "}
+                        <Link href="mailto:eduardo.floresramones@gmail.com">email</Link> and check out my{" "}
+                        <Link href="/resume.pdf">resume</Link>.
                     </p>
                 </Section>
             </div>
@@ -47,39 +50,43 @@ const lastUpdated = __BUILD_DATE__;
         <div class="about__site">
             <h1 class="about__heading loud">The Website</h1>
 
-            <div class="about__dates">
-                <p>Created October 2026</p>
-                {lastUpdated && <p>Updated {lastUpdated}</p>}
-            </div>
-
             <div class="about__content">
                 <Section title="Colophon" compact>
 
-                    <div class="about__details">
+                    <div class="about__colophon">
                         <p>
-                            <b>Stack</b> ➜ Astro, TypeScript, CSS
+                            <b>Stack:</b> Astro, TypeScript, CSS
                         </p>
                         <p>
-                            <b>Style</b> ➜ Inter typeface
-                            &nbsp;<Hex color="--bg" />
-                            &nbsp;<Hex color="--fg" />
-                            &nbsp;<Hex color="--fg-muted" />
-                            &nbsp;<Hex color="--highlight" />
+                            <b>Style:</b> Inter typeface
+                            {" "}<Hex color="--bg" />
+                            {" "}<Hex color="--fg" />
+                            {" "}<Hex color="--fg-muted" />
+                            {" "}<Hex color="--highlight" />
                         </p>
                     </div>
 
-                    <p>Take a peak at the <Link href="https://github.com/edu-flores/edu-flores.github.io">source code</Link> or <Link href="/">traffic analytics</Link> of the site.</p>
+                    <p>
+                        Take a peak at the{" "}
+                        <Link href="https://github.com/edu-flores/edu-flores.github.io">source code</Link> and{" "}
+                        <Link href="/">traffic analytics</Link> of the site.
+                    </p>
                 </Section>
 
                 <Section title="Background" compact>
                     <p>
-                        The (desktop) background is a variation of <Link href="https://wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</Link> cellular
+                        The [desktop] background is a variation of <Link href="https://wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</Link> cellular
                         automation; it uses the <i>Coagulations</i> rulestring, and cells can randomly perish.
                     </p>
                 </Section>
+
+                <div class="about__dates">
+                    <p>Created October 2026</p>
+                    {lastUpdated && <p>Updated {lastUpdated}</p>}
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 </Layout>
 
 <style>
@@ -96,10 +103,9 @@ const lastUpdated = __BUILD_DATE__;
 
     .about__dates {
         font-size: 14px;
-        margin-bottom: 1rem;
     }
 
-    .about__details {
+    .about__colophon {
         margin-bottom: 1rem;
     }
 

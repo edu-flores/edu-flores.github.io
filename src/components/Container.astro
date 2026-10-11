@@ -3,14 +3,14 @@ import Navbar from "./Navbar.astro";
 import Footer from "./Footer.astro";
 ---
 
-<main>
+<div class="container">
     <Navbar />
     <slot />
     <Footer />
-</main>
+</div>
 
 <style>
-    main {
+    .container {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
