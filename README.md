@@ -1,46 +1,23 @@
-# Astro Starter Kit: Basics
+<div align="center">
+    <img width="50" src="./public/favicon.svg" alt="Logo">
+    <h1>Personal Portfolio</h1>
+    <h3 style="margin: 0">Eduardo Flores Ramones</h3>
+    <br>
+</div>
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+My personal website, where I share a bit about my developer profile. Built with Astro, deployed with GitHub Pages.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Goals
 
-## 🚀 Project Structure
+- Preferably no scrolling
+- Few, unobtrusive animations
+- One eye-catching interactive component
+- Blackish and whiteish
+- Concise; no buzzwords or walls of text
+- Little hidden details here and there
 
-Inside of your Astro project, you'll see the following folders and files:
+### TODO
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Add more projects
+- Expose background knobs
+- Make the Style section more useful
