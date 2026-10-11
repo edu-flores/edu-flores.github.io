@@ -2,9 +2,6 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-    redirects: {
-        "/": "/about"
-    },
     vite: {
         define: {
             __BUILD_DATE__: JSON.stringify(

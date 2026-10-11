@@ -4,6 +4,7 @@ import MoonIcon from "../assets/icons/moon.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
+console.log(currentPath)
 ---
 
 <nav>
@@ -18,11 +19,11 @@ const currentPath = pathname.slice(1);
 
     <div class="navbar__links">
         <a
-            href="/about"
+            href="/"
             class="highlightable"
-            class:list={{ "navbar__link--active": currentPath === "about" }}
+            class:list={{ "navbar__link--active": currentPath === "" }}
         >
-            About
+            Home
         </a>
         <a
             href="/projects"
@@ -32,11 +33,11 @@ const currentPath = pathname.slice(1);
             Projects
         </a>
         <a
-            href="/more"
+            href="/about"
             class="highlightable"
-            class:list={{ "navbar__link--active": currentPath === "more" }}
+            class:list={{ "navbar__link--active": currentPath === "about" }}
         >
-            More
+            About
         </a>
 
         <button

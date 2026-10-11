@@ -1,127 +1,84 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
-import Chapter from "../components/Chapter.astro";
-import Technology from "../components/Technology.astro";
-import type { ComponentProps } from "astro/types";
+import Link from "../components/Link.astro";
+import Hex from "../components/Hex.astro";
 
-import EtsyImage from "../assets/imgs/etsy.png";
-import ReverbImage from "../assets/imgs/reverb.png";
-import KatconImage from "../assets/imgs/katcon.png";
-import UdemImage from "../assets/imgs/udem.png";
-
-// https://hugeicons.com
-import LocationIcon from "../assets/icons/location.svg";
-import PythonIcon from "../assets/icons/python.svg";
-import TypeScriptIcon from "../assets/icons/typescript.svg";
-import BashIcon from "../assets/icons/bash.svg";
-import BracesIcon from "../assets/icons/braces.svg";
-import ReactIcon from "../assets/icons/react.svg";
-import TailwindIcon from "../assets/icons/tailwind.svg";
-import DatabaseIcon from "../assets/icons/database.svg";
-import CloudIcon from "../assets/icons/cloud.svg";
-
-const dob = new Date("2001-07-04");
-const age = new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970;
-
-type ChapterProps = ComponentProps<typeof Chapter>;
-
-const experience: ChapterProps[] = [
-  {
-    image: EtsyImage,
-    link: "https://www.etsy.com",
-    primary: "Etsy",
-    secondary: "SWE II · Infrastructure",
-    period: "Dec '25 – Present",
-  },
-  {
-    image: ReverbImage,
-    link: "https://reverb.com",
-    primary: "Reverb",
-    secondary: "SWE II · Revenue",
-    period: "May '25 – Dec '25",
-  },
-  {
-    image: KatconImage,
-    link: "https://katcon.com",
-    primary: "Katcon",
-    secondary: "SWE · Digitalization",
-    period: "Oct '23 – Mar '25",
-  },
-];
-
-const education: ChapterProps[] = [
-  {
-    image: UdemImage,
-    link: "https://www.udem.edu.mx",
-    primary: "UDEM",
-    secondary: "B.S. in Computer Science",
-    period: "Aug '20 – Dec '24",
-  },
-];
-
-type TechnologyProps = ComponentProps<typeof Technology>;
-
-const technologies: TechnologyProps[]  = [
-    { icon: PythonIcon, name: "Python" },
-    { icon: TypeScriptIcon, name: "TypeScript" },
-    { icon: BracesIcon, name: "Go" },
-    { icon: BashIcon, name: "Bash" },
-    { icon: ReactIcon, name: "React" },
-    { icon: TailwindIcon, name: "Tailwind" },
-    { icon: DatabaseIcon, name: "PostgreSQL" },
-    { icon: CloudIcon, name: "AWS/GCP" },
-];
+const lastUpdated = __BUILD_DATE__;
 ---
 
 <Layout pageTitle="About">
     <div class="about">
-        <header>
-            <h1 class="about__title loud">Eduardo Flores</h1>
+        <div class="about__me">
+            <h1 class="about__heading loud">The Man</h1>
 
-            <div class="about__subtitle loud">
-                <span>Software Engineer II</span>
+            <div class="about__content">
+                <Section title="Interests" compact>
+                    <p>I love calisthenics, guitars, books, tennis, and Linux!</p>
+                </Section>
 
-                <a
-                    href="https://maps.app.goo.gl/SCTv6cgUrtDaRkgt9"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="about__location elevate"
-                >
-                    <LocationIcon width="22" height="22" aria-hidden="true" />
-                    <span>Mty, Mexico</span>
-                </a>
+                <Section title="Some Principles" compact>
+                    <ol class="about__principles">
+                        <li>
+                            Use Simplified Technical English&nbsp;
+                            <sup class="reference md">
+                                <Link href="https://wikipedia.org/wiki/Simplified_Technical_English"></Link>
+                            </sup>
+                        </li>
+                        <li>Question your coding agents</li>
+                        <li>Strive for self-documenting code&nbsp;
+                            <sup class="reference md">
+                                <Link href="https://wikipedia.org/wiki/Self-documenting_code"></Link>
+                            </sup>
+                        </li>
+                        <li>Debloat everything you can</li>
+                    </ol>
+                </Section>
+
+                <Section title="Contact" compact>
+                    <p>
+                        Feel free to contact me by <Link href="https://www.linkedin.com/in/edu-floram">LinkedIn</Link> or <Link href="mailto:eduardo.floresramones@gmail.com">email</Link> and
+                        check out my <Link href="/resume.pdf">resume</Link>.
+                    </p>
+                </Section>
+            </div>
+        </div>
+
+        <div class="about__site">
+            <h1 class="about__heading loud">The Website</h1>
+
+            <div class="about__dates">
+                <p>Created October 2026</p>
+                {lastUpdated && <p>Updated {lastUpdated}</p>}
             </div>
 
-            <p>
-                I fell for the internet at a young age. Now {age} and <strong>working in tech full time</strong>,
-                I'm captivated by the pace at which the field keeps changing.
-            </p>
-        </header>
+            <div class="about__content">
+                <Section title="Colophon" compact>
 
-        <Section title="Experience">
-            <ol reversed class="about__list about__list--experience">
-                {experience.map((exp) => (
-                    <li><Chapter {...exp} /></li>
-                ))}
-            </ol>
-        </Section>
+                    <div class="about__details">
+                        <p>
+                            <b>Stack</b> ➜ Astro, TypeScript, CSS
+                        </p>
+                        <p>
+                            <b>Style</b> ➜ Inter typeface
+                            &nbsp;<Hex color="--bg" />
+                            &nbsp;<Hex color="--fg" />
+                            &nbsp;<Hex color="--fg-muted" />
+                            &nbsp;<Hex color="--highlight" />
+                        </p>
+                    </div>
 
-        <Section title="Education">
-            <ol reversed class="about__list about__list--education">
-                {education.map((edu) => (
-                    <li><Chapter {...edu} /></li>
-                ))}
-            </ol>
-        </Section>
+                    <p>Take a peak at the <Link href="https://github.com/edu-flores/edu-flores.github.io">source code</Link> or <Link href="/">traffic analytics</Link> of the site.</p>
+                </Section>
 
-        <Section title="Favorite Technologies">
-            <ul class="about__list about__list--technologies">
-                {technologies.map((tech) => (
-                    <li><Technology {...tech} /></li>
-                ))}
-            </ul>
-        </Section>
+                <Section title="Background" compact>
+                    <p>
+                        The (desktop) background is a variation of <Link href="https://wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</Link> cellular
+                        automation; it uses the <i>Coagulations</i> rulestring, and cells can randomly perish.
+                    </p>
+                </Section>
+            </div>
+        </div>
     </div>
 </Layout>
 
@@ -129,43 +86,48 @@ const technologies: TechnologyProps[]  = [
     .about {
         display: flex;
         flex-direction: column;
-        gap: 2.5rem;
+        gap: 2rem;
     }
 
-    .about__title {
+    .about__heading {
         font-size: 24px;
-        margin-bottom: 0.5rem;
-    }
-
-    .about__subtitle {
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.75rem;
         margin-bottom: 1rem;
     }
 
-    .about__location {
-        display: flex;
-        align-items: center;
-        gap: 3px;
+    .about__dates {
+        font-size: 14px;
+        margin-bottom: 1rem;
     }
 
-    .about__list {
-        list-style-type: none;
+    .about__details {
+        margin-bottom: 1rem;
     }
 
-    .about__list--experience,
-    .about__list--education {
+    .about__content {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
-    .about__list--technologies {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 1rem;
+    .about__principles {
+        line-height: 24px;
+    }
+
+    /* References */
+
+    .about {
+        counter-reset: reference;
+    }
+
+    .about :global(sup.reference) {
+        counter-increment: reference;
+        position: relative;
+        top: -5px;
+        vertical-align: baseline;
+    }
+
+    .about :global(sup.reference a::before) {
+        content: "[" counter(reference) "]";
+        font-size: 12px;
     }
 </style>
